@@ -1,0 +1,25 @@
+<%= form_with model: @project,local: true,remote: true do |form|%>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+            <i class="fa fa-book prefix grey-text"></i>  
+              <%= form.text_field :name,placeholder:"Project Name",class: "form-control"%>
+              <%= @project.errors[:name].present? ? @project.errors[:name].first : '' %>
+        </div>
+        <div class="md-form mb-4">
+          <i class="fa fa-hand-o-right prefix grey-text"></i>
+          <%= form.text_field :ranking,placeholder:"Ranking", class: "form-control"%>
+             
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fa fa-at prefix grey-text"></i>
+          <%= form.text_area :details,placeholder: "Details", class: "form-control"%>    
+        </div>
+
+      </div>
+          
+      <div class="modal-footer d-flex justify-content-center">
+       
+<%= form.submit class:'btn btn-success'%>
+</div>
+<%end%>

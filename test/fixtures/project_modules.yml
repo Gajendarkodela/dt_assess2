@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  module_name: MyString
+  deleted: false
+  project: one
+
+two:
+  module_name: MyString
+  deleted: false
+  project: two

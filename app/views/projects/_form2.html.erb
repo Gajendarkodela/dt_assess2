@@ -1,0 +1,11 @@
+<%= form_for([@project || Project.new, @project_module || ProjectModule.new], html: {role: 'form'}, action: 'edit') do |form|%>
+  <%=form.text_field :module_name, id: 'project_module_name'%>
+  <%#=form.hidden_field :id, id:'module_id'%>
+  <label data-error="wrong" data-success="right" for="defaultForm-email">Module Name</label>
+  <div class="modal-footer d-flex justify-content-center">
+    <%=form.submit%>
+  </div>
+  
+<%end%>
+
+

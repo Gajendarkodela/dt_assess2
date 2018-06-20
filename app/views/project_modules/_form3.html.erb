@@ -1,0 +1,5 @@
+ <%= form_with model:[@project,@module,@test_case],remote:true,local: true do |form|%>
+  <p> <%=form.text_field :title%></p>
+  <p> <%=form.text_area :description%></p>
+  <p><%=form.submit%></p>
+<%end%>

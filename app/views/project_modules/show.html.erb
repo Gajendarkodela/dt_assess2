@@ -1,0 +1,123 @@
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Project</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <%#= render "form"%>
+  </div>
+  </div>
+</div>
+   
+    <h4>Module Name:&nbsp<%=@module.module_name%></h4>
+<h4>TestCases</h4>
+<div class="text-right">
+<!-- <a href="/projects/new" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm2">New TestCase</a> -->
+<%= link_to 'New TestCase',new_project_project_module_test_case_path(@project,@module), class:"btn btn-primary" %>
+</div>
+<div class="modal fade" id="modalLoginForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create Project</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fa fa-building prefix grey-text"></i>
+            <div class="test_case_form">
+              <%=render 'form3'%>
+              <label data-error="wrong" data-success="right" for="defaultForm-email">Module Name</label>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            
+          </div>
+        </div>
+     
+
+    </div>
+  </div>
+</div>
+
+<Table>
+  <%@test_cases.each do |tcase|%>
+    <tr>
+    <td><%= link_to (tcase.title), project_project_module_test_case_path(@project,@module,tcase) %></td>
+
+    <td><%=link_to 'Edit',edit_project_project_module_test_case_path(@project,@module,tcase),class:"btn btn-success"%></td>
+    <td><button type="button" onclick="openDeletePopupModal('<%=@project.id%>','<%= @module.id%>','<%=tcase.id%>');" class="btn btn-warning" > Delete</button>
+    </td>
+    </tr>
+    <br>
+  <%end%>
+</table>
+
+
+<div id="myModal3" class="modal fade bg-dark" style="color:#000;">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">  
+        <h4 class="modal-title">Are you sure?</h4>  
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete this Module? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <a id="test_case_delete" class="btn btn-info" data-method="delete">Ok</a>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div>   
+
+<script type="text/javascript">
+
+  function openDeletePopupModal(pid,mid,id){
+    $('#test_case_delete').attr("href","/projects/"+pid+"/project_modules/"+mid+"/test_cases/"+id); 
+    $('#myModal3').modal('show');
+  }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

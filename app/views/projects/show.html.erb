@@ -1,0 +1,134 @@
+
+
+
+
+<div class= "container">
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Edit Project</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%= render "form"%>
+      </div>
+    </div>
+  </div>
+   
+  <a href="/projects/new" class="btn btn-default btn-rounded mb-4" data-toggle="modal" 
+  data-target="#modalLoginForm">Project Name:&nbsp<%=@project.name%></a>
+  <h4>Modules</h4>
+  <div class="text-right">
+  <a href="/projects/new" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm2">New module</a>
+  </div>
+
+
+  <div class="modal fade" id="modalLoginForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Create Project</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>  
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fa fa-building prefix grey-text"></i>
+            <div class="project-module-form">
+              <%=render 'form2'%>  
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table> 
+  <%@modules.each do |mod|%>
+    <tr>
+      <td><%= link_to (mod.module_name), project_project_module_path(@project,mod) %></td>
+      <!-- <td><%= button_tag "Edit", onclick: "openEditPopupModal('#{mod.id}','#{mod.module_name}')" %></td> -->
+      <td><%=link_to 'Edit',edit_project_project_module_path(@project,mod), remote: true,class: "btn btn-success"%></td>
+      <td><button type="button"   onclick="openEditPopupModal('<%= mod.id%>','<%=@project.id%>');" class="btn btn-danger" > Delete</button></td>
+
+     </td></tr>
+     <br>
+  <%end%>
+</table>
+
+
+
+<!-- Delete Project Bootstrap Model -->
+<div class="text-right">
+  <a href="#myModal" class="btn btn-warning" data-toggle="modal">Delete Project</a>
+</div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade bg-dark" style="color:#000;">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+        </div>        
+        <h4 class="modal-title">Are you sure?</h4>  
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete this Project? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+        <%= link_to("Confirm Delete", [@project], method: :delete, class:'btn btn-warning') %>
+      </div>
+    </div>
+  </div>
+</div>     
+
+
+<!-- Delete Modules -->
+
+<div id="myModal2" class="modal fade bg-dark" style="color:#000;">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+        </div>        
+        <h4 class="modal-title">Are you sure?</h4>  
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete this Module? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <a id="module_delete" class="btn btn-info" data-method="delete">Ok</a>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>     
+<script type="text/javascript">
+
+    function openEditPopupModal(id,pid){
+      $('#module_delete').attr("href","/projects/"+pid+"/project_modules/"+id);
+      
+      $('#myModal2').modal('show');
+    }
+
+</script>
+
+
+
+
+

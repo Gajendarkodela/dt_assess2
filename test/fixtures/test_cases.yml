@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  deleted: false
+  project_module: one
+
+two:
+  title: MyString
+  description: MyText
+  deleted: false
+  project_module: two
