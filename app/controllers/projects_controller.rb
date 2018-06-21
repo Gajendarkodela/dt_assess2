@@ -4,10 +4,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       @projects = Project.all.order(:ranking)
-      render 'welcome/index',notice:"Project added successfully"
     else
       render '_errors' 
-    end
+     end
   end
   
   def new
@@ -34,7 +33,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    debugger
     @project = Project.find(params[:id])
      @project.destroy
      redirect_to root_path

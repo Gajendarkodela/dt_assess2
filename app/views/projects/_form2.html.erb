@@ -1,11 +1,13 @@
 <%= form_for([@project || Project.new, @project_module || ProjectModule.new], html: {role: 'form'}, action: 'edit') do |form|%>
-  <%=form.text_field :module_name, id: 'project_module_name'%>
-  <%#=form.hidden_field :id, id:'module_id'%>
-  <label data-error="wrong" data-success="right" for="defaultForm-email">Module Name</label>
-  <div class="modal-footer d-flex justify-content-center">
-    <%=form.submit%>
+<div class="input-group">
+  <div class="input-group-addon bg-secondary infield">
+      <i class="fa fa-book prefix text-white mt-3"></i>  
   </div>
-  
+<%=form.text_field :module_name, id: 'project_module_name',placeholder:'Project Module Name',class:"form-control"%>
+</div>
+  <div class="modal-footer d-flex justify-content-center">
+    <%=form.submit class:"btn btn-success"%>
+  </div>  
 <%end%>
 
 

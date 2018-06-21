@@ -1,25 +1,35 @@
-<%= form_with model: @project,local: true,remote: true do |form|%>
+<%= form_with model: @project do |form|%>
       <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-            <i class="fa fa-book prefix grey-text"></i>  
+        <div class="md-form mb-5" >
+          
+            <div class="input-group">
+              <div class="input-group-addon bg-secondary infield">
+                <i class="fa fa-book prefix text-white mt-3"></i>  
+              </div>
               <%= form.text_field :name,placeholder:"Project Name",class: "form-control"%>
-              <%= @project.errors[:name].present? ? @project.errors[:name].first : '' %>
-        </div>
+            </div>
+          </div>
         <div class="md-form mb-4">
-          <i class="fa fa-hand-o-right prefix grey-text"></i>
-          <%= form.text_field :ranking,placeholder:"Ranking", class: "form-control"%>
-             
-        </div>
+          <div class="input-group">
+            <div class="input-group-addon bg-secondary infield">
+              <i class="fa fa-hand-o-right prefix text-white mt-3"></i>
+            </div>
+              <%= form.text_field :ranking,placeholder:"Ranking", class: "form-control"%>
+             </div>
+           </div>
 
         <div class="md-form mb-4">
-          <i class="fa fa-at prefix grey-text"></i>
-          <%= form.text_area :details,placeholder: "Details", class: "form-control"%>    
+          <div class="input-group">
+            <div class="input-group-addon bg-secondary infield">
+              <i class="fa fa-at prefix text-white mt-3"></i>
+              </div>
+             <%= form.text_area :details,placeholder: "Details", class: "form-control"%>    
         </div>
-
+        </div>
       </div>
           
       <div class="modal-footer d-flex justify-content-center">
        
-<%= form.submit class:'btn btn-success'%>
+<%= form.submit class: 'btn btn-success bdd'%>
 </div>
 <%end%>
