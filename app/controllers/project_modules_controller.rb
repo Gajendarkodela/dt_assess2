@@ -30,7 +30,6 @@ class ProjectModulesController < ApplicationController
   def destroy
     @module = ProjectModule.find(params[:id])
     @module.destroy
-    redirect_to request.referrer,notice: "Module is successfully deleted" 
   end
 
   private

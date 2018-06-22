@@ -4,8 +4,6 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       @projects = Project.all.order(:ranking)
-    else
-      render '_errors' 
      end
   end
   
@@ -27,8 +25,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if (@project.update(project_params))
       redirect_to @project
-    else
-      render 'new'
     end
   end
 

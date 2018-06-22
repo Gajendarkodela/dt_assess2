@@ -3,7 +3,24 @@
       <%= flash[:notice] %>
     </div>
   <% end %>
-<%= render :template => "projects/new" %>
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" id="mainform">
+    <div class="modal-content" style="color:#000">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create Project</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="project_close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% @project = Project.new %>
+     <%= render "projects/form"%>
+    </div>
+  </div>
+</div>
+<div class="text-right">
+    <a href="/projects/new" id='new project' class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm">New Project</a>
+</div>
 <div class='parent' style="position:absolute;">
 <%= render 'projects' %>
 </div>

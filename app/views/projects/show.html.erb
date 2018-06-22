@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalLoginForm4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header text-center">
@@ -20,7 +20,7 @@
   </div>
    
   <a href="/projects/new" class="btn btn-default btn-rounded mb-4" data-toggle="modal" 
-  data-target="#modalLoginForm">Project Name:&nbsp<%=@project.name%></a>
+  data-target="#modalLoginForm4">Project Name:&nbsp<%=@project.name%></a>
   <h4>Modules</h4>
   <div class="text-right">
   <a href="/projects/new" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm2">New module</a>
@@ -31,7 +31,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">Create Module</h4>
+          <h4 class="modal-title w-100 font-weight-bold" id="edit-module">Create Module</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -48,25 +48,33 @@
     </div>
   </div>
 </div>
-
-<table> 
+<%if @modules.present?%>
+<table class="table-striped"> 
   <%@modules.each do |mod|%>
     <tr>
       <td><%= link_to (mod.module_name), project_project_module_path(@project,mod) %></td>
-      <!-- <td><%= button_tag "Edit", onclick: "openEditPopupModal('#{mod.id}','#{mod.module_name}')" %></td> -->
-      <td><%=link_to 'Edit',edit_project_project_module_path(@project,mod), remote: true,class: "btn btn-success"%></td>
-      <td><button type="button"   onclick="openEditPopupModal('<%= mod.id%>','<%=@project.id%>');" class="btn btn-danger" > Delete</button></td>
+      <td><%=link_to (edit_project_project_module_path(@project,mod)),remote:true do%>
+        <i class="fa fa-edit ml-5 mr-5"></i>
+        <%end%>
+      </td>
+      <td>
+        <i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>','<%=@project.id%>');"></i>
+      </td>
 
      </td></tr>
-     <br>
   <%end%>
 </table>
+<%else%>
+<h3> No Modules for this project!
+  </h3>
+<%end%>
 
 
 
 <!-- Delete Project Bootstrap Model -->
 <div class="text-right">
-  <a href="#myModal" class="btn btn-danger" data-toggle="modal">Delete Project</a>
+
+  <a href="#myModal" class="btn btn-danger mt-5" data-toggle="modal">Delete Project</a>
 </div>
 
 <!-- Modal HTML -->
@@ -106,7 +114,7 @@
         <p>Do you really want to delete this Module? This process cannot be undone.</p>
       </div>
       <div class="modal-footer">
-        <a id="module_delete" class="btn btn-info ok" data-method="delete">Ok</a>
+        <a id="module_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
       </div>
     </div>
