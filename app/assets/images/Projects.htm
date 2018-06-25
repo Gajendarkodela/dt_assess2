@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:3000/projects/97 -->
+<html lang="en" class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.turbolinks-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 9999;
+  transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}</style>
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <link rel="stylesheet" media="all" href="./Projects_files/sb-admin.self-30f40d63d3e8df504df4d7a6c1ca662aa50bca1560e630b3b82af12a80b27fc2.css">
+<link rel="stylesheet" media="all" href="./Projects_files/project_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+<link rel="stylesheet" media="all" href="./Projects_files/project_modules.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+<link rel="stylesheet" media="all" href="./Projects_files/test_cases.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+<link rel="stylesheet" media="all" href="./Projects_files/bootstrap-grid.self-d8b25e4a6a6ed7a0a0b5f9b5ad526457327a1696eb6ade1248471d2ed76ffdd9.css">
+<link rel="stylesheet" media="all" href="./Projects_files/bootstrap-grid.min.self-f32e9a98880d7c38831ed246b88e784fe697b054fc00620b7dbdd31fdd92223c.css">
+<link rel="stylesheet" media="all" href="./Projects_files/bootstrap-reboot.self-d67427bd60b33875e775708241af638018cb2440389f595a40b89f7cbe5a34e1.css">
+<link rel="stylesheet" media="all" href="./Projects_files/bootstrap-reboot.min.self-5f418a6d2b504c8967ca13567c3a8e66acbb604df9f3cb1826e42b0abd0b34d3.css">
+<link rel="stylesheet" media="all" href="./Projects_files/bootstrap.self-7dec53a1fda2e9750614d3214d5bdbe132471309460ec0696d309fde0c31cebf.css">
+<link rel="stylesheet" media="all" href="./Projects_files/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css">
+<link rel="stylesheet" media="all" href="./Projects_files/font-awesome.self-11fdacefded587cd127e5382ebd5cc284372b04381e888e6bcccd41bc51a5156.css">
+<link rel="stylesheet" media="all" href="./Projects_files/font-awesome.min.self-306130e6ba08a261d693df60443a670ca53a7a541654c4138090053ccf0a94a2.css">
+<link rel="stylesheet" media="all" href="./Projects_files/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+<link rel="stylesheet" media="all" href="./Projects_files/application.self-ee261293a8b3ce592230c9136372cf88e7c13b6a57024254633da4000c080b66.css">
+  <link rel="stylesheet" media="screen" href="./Projects_files/bootstrap.min.self-a25e528dfbb86d0b84cebc5e9b0944c5be542d72fadbc3fde89316966cd8b2d1.css">
+  <link rel="stylesheet" media="screen" href="./Projects_files/font-awesome.min.self-306130e6ba08a261d693df60443a670ca53a7a541654c4138090053ccf0a94a2.css">
+  <link rel="stylesheet" media="screen" href="./Projects_files/sb-admin.self-30f40d63d3e8df504df4d7a6c1ca662aa50bca1560e630b3b82af12a80b27fc2.css">
+  <script src="./Projects_files/bootstrap.bundle.self-ea4d0faa17561396aaa05a90e805df4ca1129e00f6778633c3550344dfed54d3.js"></script>
+<script src="./Projects_files/rails-ujs.self-8944eaf3f9a2615ce7c830a810ed630e296633063af8bb7441d5702fbe3ea597.js"></script>
+<script src="./Projects_files/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js"></script>
+<script src="./Projects_files/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js"></script>
+<script src="./Projects_files/turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js"></script>
+<script src="./Projects_files/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js"></script>
+<script src="./Projects_files/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js"></script>
+<script src="./Projects_files/project_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js"></script>
+<script src="./Projects_files/project_modules.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js"></script>
+<script src="./Projects_files/test_cases.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js"></script>
+<script src="./Projects_files/Chart.bundle.self-65c30b911cb7aa1c65fc9eb69b953a7b7843e5f23fe75d927a6723184b44778a.js"></script><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+<script src="./Projects_files/Chart.bundle.min.self-be22839be3cc155ecb0a6ed6758218a846cf6663daf1ceecee2e68a9aea1da87.js"></script>
+<script src="./Projects_files/Chart.self-ed27d9877ec45fd47058b9b8d8f923074bb080c108488019ede52aba0cc24502.js"></script>
+<script src="./Projects_files/Chart.min.self-b26766dbef822c075056eb7012dc36ae75970dc990497732f927d46ef6070858.js"></script>
+<script src="./Projects_files/bootstrap.bundle.min.self-1ee97f31e4f97c8a61a125110093a07954a88ae7b69074636707b5c961dcd0db.js"></script>
+<script src="./Projects_files/bootstrap.self-8e84133c623bc4d897e342c1ee5ead00b01f43b4b1eff6480b092650e1d682f5.js"></script>
+<script src="./Projects_files/bootstrap.min.self-3f55ae7cb1e0ade8ec6caee602a1f92c77404301eca33b891f02f5418470abd1.js"></script>
+<script src="./Projects_files/dataTables.bootstrap4.self-36a9758d617fad1278a46fe207846371614a29a482517c30d9fffb3764c5b178.js"></script>
+<script src="./Projects_files/jquery.dataTables.self-b93eeb91507ae5d230366b4dad79276d3273a0e14ed8cb0b8ed49f8ff1a33aaf.js"></script>
+<script src="./Projects_files/jquery.easing.compatibility.self-412bb9d368eaba2e0a092194a7f83aa0cf6e1cd86a87167e5009a1b103ddafdf.js"></script>
+<script src="./Projects_files/jquery.easing.self-b6fcd81310e184b49e8db3759ee66a507d10c3c3677b1393550abdd5fdeca147.js"></script>
+<script src="./Projects_files/jquery.easing.min.self-2b13a1a3d369e37917743b833ffe90da6831da662a46d1e81ef1e9abc84c208b.js"></script>
+<script src="./Projects_files/jquery.self-5af507e253c37e9c9dcf65064fc3f93795e6e28012780579975a4d709f4074ad.js"></script>
+<script src="./Projects_files/jquery.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js"></script>
+<script src="./Projects_files/jquery.slim.self-e988b951df5f19e484ad99772ecb38633b96a948b84d9a4091040e7b2907d5e9.js"></script>
+<script src="./Projects_files/jquery.slim.min.self-dd3d11223a9db9152c9049ed74fe68e8bf162df1a1aacd94a3b57080aa27f0a4.js"></script>
+<script src="./Projects_files/sb-admin-charts.self-b467dc2f3b4b367b915bfc9594e9730a62913f4d5341132aa35a4822ba7afc88.js"></script>
+<script src="./Projects_files/sb-admin-charts.min.self-f51f5dfadc33cb6516e494368461147c05b3632df8cc928875bfa0bf4845962f.js"></script>
+<script src="./Projects_files/sb-admin-datatables.self-dc1619fe27bdc769c859200ed4df4cd152123d1e457cfe5683410a1d9ccd3a8a.js"></script>
+<script src="./Projects_files/sb-admin-datatables.min.self-c1f00e5b8080f45299fbd8781c7025b295148fa4cf029a0be6f90fac9128de41.js"></script>
+<script src="./Projects_files/sb-admin.self-e7a1b9ce74d50f47ba8f38844e36a7f8ddc9006e67cff8920303687f6af51311.js"></script>
+<script src="./Projects_files/sb-admin.min.self-2c2a986e56747ea062c4096c3898f1e9edb9a69ae5cd3cff9468f2352bdb66fc.js"></script>
+<script src="./Projects_files/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js"></script>
+<script src="./Projects_files/application.self-5e866087125b4eb5e02a8365d73cdaeb7f2127bbb3f479fb54ab3ddb0d5c66af.js"></script>   
+  
+  
+  
+     
+  
+    
+  
+  
+   
+  
+<script src="./Projects_files/Chart.min.self-b26766dbef822c075056eb7012dc36ae75970dc990497732f927d46ef6070858.js"></script><script src="./Projects_files/bootstrap.bundle.min.self-1ee97f31e4f97c8a61a125110093a07954a88ae7b69074636707b5c961dcd0db.js"></script><script src="./Projects_files/dataTables.bootstrap4.self-36a9758d617fad1278a46fe207846371614a29a482517c30d9fffb3764c5b178.js"></script><script src="./Projects_files/jquery.dataTables.self-b93eeb91507ae5d230366b4dad79276d3273a0e14ed8cb0b8ed49f8ff1a33aaf.js"></script><script src="./Projects_files/jquery.easing.min.self-2b13a1a3d369e37917743b833ffe90da6831da662a46d1e81ef1e9abc84c208b.js"></script><script src="./Projects_files/jquery.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js"></script><script src="./Projects_files/sb-admin-charts.min.self-f51f5dfadc33cb6516e494368461147c05b3632df8cc928875bfa0bf4845962f.js"></script><script src="./Projects_files/sb-admin-datatables.min.self-c1f00e5b8080f45299fbd8781c7025b295148fa4cf029a0be6f90fac9128de41.js"></script><script src="./Projects_files/sb-admin.min.self-2c2a986e56747ea062c4096c3898f1e9edb9a69ae5cd3cff9468f2352bdb66fc.js"></script><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" type="image/x-icon" href="http://localhost:3000/assets/favicon-0bc10ea6a9157bdaf341ff81061523d54d27d436fb0789dcf312b7c6e5c0731d.ico"><title>Projects</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="9tuFaMjILA2ZyyVP8bT2H7SCYhAO6zkSiU3OG3Qv6ARVEO00/EhPSILo91/8hdUm1dX7pYrZmGbgjn3RqTLTkA=="></head>
+
+<body class="fixed-nav sticky-footer bg-light modal-open" id="page-top" cz-shortcut-listen="true">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="navbar-brand">Test Case Application</div>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+    <div>
+      <div class="container">
+
+  <div class="modal fade" id="modalLoginForm4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Edit Project</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        
+<form id="my-form" action="http://localhost:3000/projects/97" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="QuO6+BR3JGXnk695hv+Z/7JB5CjM+WNgT6MWkVqkmsFL87W7lIZhc260mIvjTc9CJaZH4oX3Kky/ZINYp+lZWw==">
+
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          
+            <div class="input-group">
+              <div class="input-group-addon bg-secondary infield">
+                <i class="fa fa-book prefix text-white mt-3"></i>  
+              </div>
+              <input placeholder="Project Name" class="form-control" id="pro" type="text" value="ABC" name="project[name]">
+            </div>
+            <div id="error-name" class="text-danger"></div>
+          </div>
+        <div class="md-form mb-4">
+          <div class="input-group">
+            <div class="input-group-addon bg-secondary infield">
+              <i class="fa fa-hand-o-right prefix text-white mt-3"></i>
+            </div>
+              <input placeholder="Ranking" class="form-control" type="text" value="2" name="project[ranking]">
+             </div>
+             <div id="error-ranking" class="text-danger"></div>
+           </div>
+
+        <div class="md-form mb-4">
+          <div class="input-group">
+            <div class="input-group-addon bg-secondary infield">
+              <i class="fa fa-at prefix text-white mt-3"></i>
+              </div>
+             <textarea placeholder="Details" class="form-control" name="project[details]">HI
+
+</textarea>    
+        </div>
+        <div id="error-details" class="text-danger"></div>
+        </div>
+      </div>
+          
+      <div class="modal-footer d-flex justify-content-center">
+       
+        <input type="submit" name="commit" value="Update Project" class="btn btn-success bdd" data-disable-with="Update Project">
+      </div>
+</form>
+      </div>
+    </div>
+  </div>
+   
+  <a href="http://localhost:3000/projects/new" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm4">Project Name:&nbsp;ABC</a>
+  <h4>Modules</h4>
+  <div class="text-right">
+  <a href="http://localhost:3000/projects/new" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm2">New module</a>
+  </div>
+
+
+  <div class="modal fade" id="modalLoginForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold" id="edit-module"><h4>Edit Module</h4><h4></h4></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>  
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <div class="project-module-form"><form role="form" class="edit_project_module" id="edit_project_module_91" action="http://localhost:3000/projects/97/project_modules/91" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch">
+<div class="input-group">
+  <div class="input-group-addon bg-secondary infield">
+      <i class="fa fa-book prefix text-white mt-3"></i>  
+  </div>
+<input id="project_module_name" placeholder="Project Module Name" class="form-control" type="text" value="Hamam project" name="project_module[module_name]">
+</div>
+<div id="error-module"></div>
+  <div class="modal-footer d-flex justify-content-center">
+    <input type="submit" name="commit" value="Update Project module" class="btn btn-success" data-disable-with="Update Project module">
+  </div>  
+</form>
+
+</div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table-striped"> 
+    <tbody><tr>
+      <td><a href="http://localhost:3000/projects/97/project_modules/91">Hamam project</a></td>
+      <td><a data-remote="true" href="http://localhost:3000/projects/97/project_modules/91/edit">
+        <i class="fa fa-edit ml-5 mr-5"></i>
+</a>      </td>
+      <td>
+        <i class="fa fa-trash text-danger" onclick="openEditPopupModal(&#39;91&#39;,&#39;97&#39;);"></i>
+      </td>
+
+     </tr>
+</tbody></table>
+
+
+
+<!-- Delete Project Bootstrap Model -->
+<div class="text-right">
+
+  <a href="http://localhost:3000/projects/97#myModal" class="btn btn-danger mt-5" data-toggle="modal">Delete Project</a>
+</div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade bg-dark" style="color: rgb(0, 0, 0); display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+        </div>        
+        <h4 class="modal-title">Are you sure?</h4>  
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete this Project? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-info ok" rel="nofollow" data-method="delete" href="http://localhost:3000/projects/97">Ok</a>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>     
+
+
+<!-- Delete Modules -->
+
+<div id="myModal2" class="modal fade bg-dark" style="color: rgb(0, 0, 0); display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+        </div>        
+        <h4 class="modal-title">Are you sure?</h4>  
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete this Module? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <a id="module_delete" class="btn btn-info ok" data-method="delete" data-remote="true" href="http://localhost:3000/projects/97/project_modules/91">Ok</a>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>     
+<script type="text/javascript">
+
+    function openEditPopupModal(id,pid){
+      $('#module_delete').attr("href","/projects/"+pid+"/project_modules/"+id);
+      
+      $('#myModal2').modal('show');
+    }
+
+</script>
+
+
+
+
+
+
+    </div>
+
+<footer class="footer well ml-0-mb-0-imp b-radius-0 fixed-bottom">
+  <div style="background-color:#f5f5f5;">
+    <div class="copyright-info text-center">
+      <span class="text-muted">
+        © Gajendar Kodela 2018 SNIST. (
+          Developed and maintained by Gajendar
+        )
+      
+      
+      </span>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</footer>
+
+
+
+
+
+</div><div class="modal-backdrop fade show"></div><div class="modal-backdrop fade show"></div></body></html>

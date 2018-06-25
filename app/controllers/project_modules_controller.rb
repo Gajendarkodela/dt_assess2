@@ -22,14 +22,16 @@ class ProjectModulesController < ApplicationController
 
   def update
     @project_module = ProjectModule.find(params[:id])
-    @project_module.update(module_params)
-    redirect_to request.referrer
+    if @project_module.update(module_params)
+      redirect_to request.referrer
+    end
   end
 
 
   def destroy
     @module = ProjectModule.find(params[:id])
     @module.destroy
+    redirect_to request.referrer
   end
 
   private

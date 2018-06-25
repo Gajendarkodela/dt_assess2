@@ -1,4 +1,3 @@
-$('#edit-module').html('<h4>Create Module<h4>')
 <%if @project_module.errors.any? %>
  $('#error-module').html('name <%= @project_module.errors["module_name"][0]%>!!');
 <%end%>

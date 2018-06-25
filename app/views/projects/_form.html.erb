@@ -2,11 +2,11 @@
 <%= form_with model: @project,id:"my-form" do |form|%>
 
       <div class="modal-body mx-3">
-        <div class="md-form mb-5" >
+        <div class="md-form mb-4" >
           
             <div class="input-group">
               <div class="input-group-addon bg-secondary infield">
-                <i class="fa fa-book prefix text-white mt-3"></i>  
+                <i class="fa fa-book prefix text-white mt-3 booki"></i>  
               </div>
               <%= form.text_field :name,placeholder:"Project Name",class: "form-control", id: "pro"%>
             </div>
@@ -15,7 +15,7 @@
         <div class="md-form mb-4">
           <div class="input-group">
             <div class="input-group-addon bg-secondary infield">
-              <i class="fa fa-hand-o-right prefix text-white mt-3"></i>
+              <i class="fa fa-hand-o-right prefix text-white mt-3 booki"></i>
             </div>
               <%= form.text_field :ranking,placeholder:"Ranking", class: "form-control"%>
              </div>
@@ -25,7 +25,7 @@
         <div class="md-form mb-4">
           <div class="input-group">
             <div class="input-group-addon bg-secondary infield">
-              <i class="fa fa-at prefix text-white mt-3"></i>
+              <i class="fa fa-at prefix text-white"></i>
               </div>
              <%= form.text_area :details,placeholder: "Details", class: "form-control"%>    
         </div>
@@ -35,6 +35,6 @@
           
       <div class="modal-footer d-flex justify-content-center">
        
-        <%= form.submit class: 'btn btn-success bdd'%>
+        <%= form.submit class: 'btn btn-primary bdd'%>
       </div>
 <%end%>

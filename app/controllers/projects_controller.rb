@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       @projects = Project.all.order(:ranking)
+      redirect_to request.referrer
      end
   end
   
@@ -37,8 +38,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name,:ranking,:details)
   end
-
-  
-
-
 end
