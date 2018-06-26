@@ -1,11 +1,12 @@
-<div class= "container">
+<button onclick="goBack()" class="btn btn-primary">Back</button>
+<div class= "container"> 
   <% if flash[:notice].present? %>
     <div class="alert alert-success" role="alert">
       <%= flash[:notice] %>
     </div>
   <% end %>
 
-  <div class="modal fade" id="modalLoginForm4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalLoginForm4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"   aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header text-center">
@@ -14,7 +15,7 @@
           <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <%= render "form"%>
+        <%= render "form_project"%>
       </div>
     </div>
   </div>
@@ -30,61 +31,61 @@
         <div class="modal-body mx-3">
           <div class="md-form mb-5">
             <div class="project-module-form">
-              <%=render 'form2'%>  
+              <%=render 'form_module'%>  
             </div>
           </div>
       </div>
     </div>
   </div>
 </div>
+
 <div style="margin-left: 200px;
     margin-top: 36px;">
-<h4>Project Name:</h4><a href="/projects/new" data-toggle="modal" 
-  data-target="#modalLoginForm4">&nbsp<%=@project.name%></a></div>
- <div class="table-wrapper">
-
+  <h4>Project Name:<a href="/projects/new" data-toggle="modal" 
+  data-target="#modalLoginForm4">&nbsp<%=@project.name%></a></h4></div>
+  <div class="table-wrapper">
     <div class="table-title">
       <div class="row">
         <div class="col-sm-8"><h3>Modules List</h3></div>
         <div class="col-sm-4">
-            <a href="/projects/new" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalLoginForm2" 
-               id=" newmodule"><i class="fa fa-plus"></i>&nbsp;Module
+            <a href="/projects/new" class="btn btn-primary pull-right text-white" data-toggle="modal" data-target="#modalLoginForm2"  id="newmodule"><i class="fa fa-plus"></i>&nbsp;Module
             </a>
+           <!--  <a href="/projects/new" class="btn btn-primary pull-right text-white"  id="newmodule"><i class="fa fa-plus" data-remote="true"></i>&nbsp;Module
+            </a> -->
         </div>
       </div>
     </div>
     <%if @modules.present?%>
-    <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th colspan=2>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        <%@modules.each do |mod|%>
-          <tr>
-            <td><%= link_to (mod.module_name), project_project_module_path(@project,mod) %></td>
-            <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_project_module_path(@project,mod)),remote:true%>
-                </td>  
-            <td>
-               <i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>','<%=@project.id%>');"></i>
-            </td>
-          </tr>
-        <%end%>
-        </tbody>
-    </table>
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th colspan=2>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%@modules.each do |mod|%>
+            <tr>
+              <td><%= link_to (mod.module_name), project_project_module_path(@project,mod) %></td>
+              <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_project_module_path(@project,mod)),remote:true%>
+                  </td>  
+              <td>
+                 <a><i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>','<%=@project.id%>');"></i></a>
+              </td>
+            </tr>
+          <%end%>
+          </tbody>
+      </table> 
+    <% else %>
+       <h3> No Modules for this project!</h3>
+    <%end%>
   </div>
- <% else %>
- <h3> No Modules for this project!</h3>
-<%end%>
 </div>
 
 
 <!-- Delete Project Bootstrap Model -->
-<div class="container">
-
-  <a href="#myModal" class="btn btn-light text-danger mt-5" data-toggle="modal">Delete Project</a>
+<div class="container ml-5">
+  <a href="#myModal" class="btn btn-light text-danger" data-toggle="modal">Delete Project</a>
 </div>
 
 <!-- Modal HTML -->
@@ -110,7 +111,6 @@
 
 
 <!-- Delete Modules -->
-
 <div id="myModal2" class="modal fade" style="color:#000;">
   <div class="modal-dialog modal-confirm">
     <div class="modal-content">
@@ -127,19 +127,21 @@
       </div>
     </div>
   </div>
-</div>     
+</div>  
+
 <script type="text/javascript">
 
-    function openEditPopupModal(id,pid){
-      $('#module_delete').attr("href","/projects/"+pid+"/project_modules/"+id);
-      
-      $('#myModal2').modal('show');
+  function openEditPopupModal(id,pid){
+    $('#module_delete').attr("href","/projects/"+pid+"/project_modules/"+id);
+    $('#myModal2').modal('show');
     }
-
+    
     $(document).ready(function(){
     $("#newmodule").click(function(){
-        document.getElementById("new_project_module").reset();
+        document.getElementById("module_form").reset();
         $('#error-module').html('');
+        $('#edit-module').html('<h4>Create Module<h4>')
+
         
     });
 });

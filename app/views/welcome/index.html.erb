@@ -2,9 +2,9 @@
     <div class="alert alert-success" role="alert">
       <%= flash[:notice] %>
     </div>
-  <% end %>
+<% end %>
 
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="  true">
   <div class="modal-dialog" role="document" id="mainform">
     <div class="modal-content" style="color:#000">
       <div class="modal-header text-center">
@@ -14,17 +14,17 @@
           </button>
       </div>
       <% @project = Project.new %>
-     <%= render "projects/form"%>
+      <%= render "projects/form_project"%>
     </div>
   </div>
 </div>
+
 <div class="text-right">
     <a href="/projects/new" id='newproject' class="btn btn-primary mt-3" data-toggle="modal" data-target="#modalLoginForm">+ New Project</a>
 </div>
-<div class='parent' style="position:absolute;">
-<%= render 'projects' %>
+<div class='container' style="position:absolute;">
+  <%= render 'projects' %>
 </div>
-
 
 <script>
 $(document).ready(function(){

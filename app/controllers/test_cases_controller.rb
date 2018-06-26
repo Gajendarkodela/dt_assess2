@@ -8,8 +8,9 @@ class TestCasesController < ApplicationController
   def create
     @module = ProjectModule.find(params[:project_module_id])
     @testcase =@module.test_cases.create(test_case_params)
-    @testcase.save
-    redirect_to project_project_module_path(params[:project_id],@module)
+    if @testcase.save
+      redirect_to project_project_module_path(params[:project_id],params[:project_module_id])
+    end
   end
 
   def destroy
@@ -30,9 +31,10 @@ class TestCasesController < ApplicationController
   end
 
   def update
-    @test_case = TestCase.find(params[:id])
-    @test_case.update(test_case_params)
-    redirect_to request.referrer
+    @testcase = TestCase.find(params[:id])
+    if @testcase.update(test_case_params)
+      redirect_to request.referrer
+    end
   end
 
   private 

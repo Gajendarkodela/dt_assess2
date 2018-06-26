@@ -1,5 +1,6 @@
 class ProjectModulesController < ApplicationController
   skip_before_action :verify_authenticity_token
+
   def create
     @project_module = ProjectModule.new(module_params)
     @project_module.project_id = params[:project_id]
@@ -11,7 +12,7 @@ class ProjectModulesController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @module = ProjectModule.find(params[:id])
-    @test_cases =@module.test_cases
+    @test_cases = @module.test_cases
     @test_case = TestCase.new
   end
 
@@ -22,11 +23,11 @@ class ProjectModulesController < ApplicationController
 
   def update
     @project_module = ProjectModule.find(params[:id])
+    
     if @project_module.update(module_params)
       redirect_to request.referrer
     end
   end
-
 
   def destroy
     @module = ProjectModule.find(params[:id])
@@ -35,6 +36,7 @@ class ProjectModulesController < ApplicationController
   end
 
   private
+
   def module_params
     params.require(:project_module).permit(:module_name,:id)
   end

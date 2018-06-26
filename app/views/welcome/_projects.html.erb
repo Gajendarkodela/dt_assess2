@@ -1,22 +1,22 @@
 <div class="mt-3">
-<% @projects.each do |project| %>
-  <a href="projects/<%= project.id%>" class="text-dark"> 
-    <div class="col-xl-4 col-sm-6 mb-4" style="float:left">
-      <div class="card bg-light o-hidden h-100">
-        <div class="card-body">
-          <div class="card-body-icon">
-            <img src="assets/favicon.png" width=112>
+  <% @projects.each do |project| %>
+    <a href="http://localhost:3000/projects/<%= project.id%>" class="text-dark" data-local="true"> 
+      <div class="ddd" style="float:left">
+        <div class="card bg-light o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <img src="assets/favicon.png" width=112>
+            </div>
+            <div class="mr-5">
+                              <%= truncate project.details,length:35%>
+            </div>
           </div>
-          <div class="mr-5">
-                            <%= truncate project.details,length:35%>
+          <div class="card-footer text-black clearfix small z-1" href="#">
+            <span class="float-left"><%=project.name%></span>
+            <span class="float-right text-primary mr-5"><%=project.ranking%></span>
           </div>
-        </div>
-        <div class="card-footer text-black clearfix small z-1" href="#">
-          <span class="float-left"><%=project.name%></span>
-          <span class="float-right text-primary mr-5"><%=project.ranking%></span>
         </div>
       </div>
-    </div>
-   </a>      
-<%end%>
+     </a>      
+  <%end%>
 </div>

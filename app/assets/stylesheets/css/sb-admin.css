@@ -575,7 +575,18 @@ td {padding:5px;}
   table.table td .add {
     display: none;
   }
+  
+  .ml-5, .mx-5 {
+    margin-left: 17rem!important;
+}
+.ddd
 
+{
+  width:343px;
+  height:147px;
+  margin-right: 25px;
+  margin-bottom:25px;
+}
 
 
 

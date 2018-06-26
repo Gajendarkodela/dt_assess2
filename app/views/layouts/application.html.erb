@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <%= favicon_link_tag %>
-  <title>Projects</title>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag 'vendor/bootstrap/css/bootstrap.min.css' %>
-  <%= stylesheet_link_tag 'vendor/font-awesome/css/font-awesome.min.css' %>
-  <%= stylesheet_link_tag 'css/sb-admin' %>
-  <%= javascript_include_tag "application" %>   
-  <%= javascript_include_tag 'vendor/jquery.min.js' %>
-  <%= javascript_include_tag 'vendor/bootstrap.bundle.min.js' %>
-  <%= javascript_include_tag 'vendor/jquery.easing.min.js' %>
-  <%= javascript_include_tag 'vendor/Chart.min.js'%>   
-  <%= javascript_include_tag 'vendor/jquery.dataTables.js'%>
-  <%= javascript_include_tag 'vendor/dataTables.bootstrap4.js'%>  
-  <%= javascript_include_tag 'vendor/sb-admin.min.js'%>
-  <%= javascript_include_tag 'vendor/sb-admin-datatables.min.js'%>
-  <%= javascript_include_tag 'vendor/sb-admin-charts.min.js'%> 
-  
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= favicon_link_tag %>
+    <title>Projects</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag 'vendor/bootstrap/css/bootstrap.min' %>
+    <%= stylesheet_link_tag 'vendor/font-awesome/css/font-awesome.min' %>
+    <%= stylesheet_link_tag 'css/sb-admin' %>
+    <%= javascript_include_tag "application" %>   
+    <%= javascript_include_tag 'vendor/jquery.min.js' %>
+    <%= javascript_include_tag 'vendor/bootstrap.bundle.min.js' %>
+    <%= javascript_include_tag 'vendor/jquery.easing.min.js' %>
+    <%= javascript_include_tag 'vendor/Chart.min.js'%>   
+    <%= javascript_include_tag 'vendor/jquery.dataTables.js'%>
+    <%= javascript_include_tag 'vendor/dataTables.bootstrap4.js'%>  
+    <%= javascript_include_tag 'vendor/sb-admin.min.js'%>
+    <%= javascript_include_tag 'vendor/sb-admin-datatables.min.js'%>
+    <%= javascript_include_tag 'vendor/sb-admin-charts.min.js'%>  
+  </head>
 
-<body class="fixed-nav sticky-footer bg-light" id="page-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="/"> Test Case Application</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
+  <body class="fixed-nav sticky-footer bg-light" id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <a class="navbar-brand" href="/"> Test Case Application</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
     <div>
       <%= yield %>
     </div>
 
-<footer class="footer well ml-0-mb-0-imp b-radius-0 fixed-bottom">
-  <div style="background-color:#f5f5f5;">
-    <div class="copyright-info text-center">
-      <span class="text-muted">
-        © Gajendar Kodela 2018 SNIST. (
-          Developed and maintained by Gajendar
-        )
-      
-      
-      </span>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-</footer>
-</body>
+    <footer class="footer well ml-0-mb-0-imp b-radius-0 fixed-bottom">
+      <div style="background-color:#f5f5f5;">
+        <div class="copyright-info text-center">
+          <span class="text-muted">
+              © Gajendar Kodela 2018 SNIST. (
+              Developed and maintained by Gajendar
+            )  
+          </span>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </footer>
+  </body>
+
+
+  <script>
+    function goBack() {
+        window.history.back();
+     }
+  </script>
 
 </html>
 

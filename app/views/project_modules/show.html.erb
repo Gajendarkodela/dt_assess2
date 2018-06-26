@@ -1,67 +1,45 @@
-
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Edit Project</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    <%#= render "form"%>
-  </div>
-  </div>
+<button onclick="goBack()" class="btn btn-primary">Back</button>
+<div style="margin-left: 287px;margin-top: 36px;">
+  <h4>Module Name:&nbsp<%=@module.module_name%></h4>
 </div>
-   
-    <h4>Module Name:&nbsp<%=@module.module_name%></h4>
-<h4>TestCases</h4>
-<div class="text-right">
-<!-- <a href="/projects/new" class="btn btn-primary" data-toggle="modal" data-target="#modalLoginForm2">New TestCase</a> -->
-<%= link_to 'New TestCase',new_project_project_module_test_case_path(@project,@module), class:"btn btn-primary" %>
-</div>
-<div class="modal fade" id="modalLoginForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Create Project</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      
-        <div class="modal-body mx-3">
-          <div class="md-form mb-5">
-            <i class="fa fa-building prefix grey-text"></i>
-            <div class="test_case_form">
-              <%=render 'form3'%>
-              <label data-error="wrong" data-success="right" for="defaultForm-email">Module Name</label>
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            
-          </div>
-        </div>
-     
 
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-8"><h3>TestCase List</h3></div>
+      <div class="col-sm-4 pl-5">
+        <%= link_to 'New TestCase',new_project_project_module_test_case_path(@project,@module), class:"btn btn-primary" %>
+      </div>
     </div>
   </div>
+  <%if @test_cases.present?%>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan=2>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@test_cases.each do |tcase|%>
+          <tr>
+            <td><%= link_to (tcase.title), project_project_module_test_case_path(@project,@module,tcase) %></td>
+            <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_project_module_test_case_path(@project,@module,tcase))%>
+            </td>  
+            <td>
+              <i class="fa fa-trash text-danger" onclick="openDeletePopupModal('<%=@project.id%>','<%= @module.id%>','<%=tcase.id%>');"></i>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table> 
+  <% else %>
+    <h3> No Testcases for this Module!</h3>
+  <%end%>
 </div>
 
-<Table>
-  <%@test_cases.each do |tcase|%>
-    <tr>
-    <td><%= link_to (tcase.title), project_project_module_test_case_path(@project,@module,tcase) %></td>
 
-    <td><%=link_to 'Edit',edit_project_project_module_test_case_path(@project,@module,tcase),class:"btn btn-success"%></td>
-    <td><button type="button" onclick="openDeletePopupModal('<%=@project.id%>','<%= @module.id%>','<%=tcase.id%>');" class="btn btn-warning" > Delete</button>
-    </td>
-    </tr>
-    <br>
-  <%end%>
-</table>
-
-
-<div id="myModal3" class="modal fade bg-dark" style="color:#000;">
+<div id="myModal3" class="modal fade" style="color:#000;">
   <div class="modal-dialog modal-confirm">
     <div class="modal-content">
       <div class="modal-header">  
@@ -69,10 +47,10 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Do you really want to delete this Module? This process cannot be undone.</p>
+        <p>Do you really want to delete this TestCase? This process cannot be undone.</p>
       </div>
       <div class="modal-footer">
-        <a id="test_case_delete" class="btn btn-info" data-method="delete">Ok</a>
+        <a id="test_case_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
         
       </div>

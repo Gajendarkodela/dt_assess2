@@ -1,10 +1,11 @@
-<%= form_for([@project, @project_module || ProjectModule.new], html: {role: 'form'}, action: 'edit',remote:true) do |form|%>
+<%= form_with model: [@project,@project_module||ProjectModule.new] ,id:'module_form' do |form|%>
   <div class="input-group">
     <div class="input-group-addon bg-secondary infield">
-    <i class="fa fa-book prefix text-white booki mt-3"></i>  
+      <i class="fa fa-book prefix text-white booki mt-3"></i>  
     </div>
     <%=form.text_field :module_name, id: 'project_module_name', placeholder:'Project Module Name',class:"form-control"%>
   </div>
+  
   <div id="error-module"></div>
   <div class="modal-footer d-flex justify-content-center">
     <%=form.submit class:"btn btn-success"%>

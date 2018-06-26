@@ -1,0 +1,18 @@
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      
+      <div class="col-sm-4">
+        <h3> New TestCase</h3>
+        <div class="mt-5">
+          <%= form_with model:[@project,@module,@test_case]  do |form|%>
+            <div id="error-test" class="text-danger"></div>
+            <p> <%=form.text_field :title,placeholder:"TestCase name"%></p>
+            <p> <%=form.text_area :description,placeholder:"TestCase description"%></p>
+            <p><%=form.submit class:"btn btn-primary"%></p>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

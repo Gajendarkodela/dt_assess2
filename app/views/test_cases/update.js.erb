@@ -1,0 +1,6 @@
+<%if @testcase.errors.any?%>
+  $('#error-test').html('name<%= @testcase.errors["title"][0]%>');
+<%else%>
+  $('#error-test').html('');
+<%end%>
+
