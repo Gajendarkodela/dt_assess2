@@ -1,6 +1,12 @@
+<% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
 <button onclick="goBack()" class="btn btn-primary">Back</button>
 <div style="margin-left: 287px;margin-top: 36px;">
-  <h4>Module Name:&nbsp<%=@module.module_name%></h4>
+  <h4>Module Name:&nbsp<%=@project_module.module_name%></h4>
 </div>
 
 <div class="table-wrapper">
@@ -8,7 +14,7 @@
     <div class="row">
       <div class="col-sm-8"><h3>TestCase List</h3></div>
       <div class="col-sm-4 pl-5">
-        <%= link_to 'New TestCase',new_project_project_module_test_case_path(@project,@module), class:"btn btn-primary" %>
+        <%= link_to 'New TestCase',new_project_project_module_test_case_path(@project,@project_module), class:"btn btn-primary" %>
       </div>
     </div>
   </div>
@@ -23,11 +29,11 @@
       <tbody>
         <%@test_cases.each do |tcase|%>
           <tr>
-            <td><%= link_to (tcase.title), project_project_module_test_case_path(@project,@module,tcase) %></td>
-            <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_project_module_test_case_path(@project,@module,tcase))%>
+            <td><%= link_to (tcase.title), project_project_module_test_case_path(@project,@project_module,tcase) %></td>
+            <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_project_module_test_case_path(@project,@project_module,tcase))%>
             </td>  
             <td>
-              <i class="fa fa-trash text-danger" onclick="openDeletePopupModal('<%=@project.id%>','<%= @module.id%>','<%=tcase.id%>');"></i>
+              <i class="fa fa-trash text-danger" onclick="openDeletePopupModal('<%=@project.id%>','<%= @project_module.id%>','<%=tcase.id%>');"></i>
             </td>
           </tr>
         <%end%>

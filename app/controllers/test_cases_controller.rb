@@ -6,17 +6,17 @@ class TestCasesController < ApplicationController
   end
 
   def create
-    @module = ProjectModule.find(params[:project_module_id])
-    @testcase =@module.test_cases.create(test_case_params)
+    @testcase =TestCase.new(test_case_params)
+    @testcase.project_module_id = params[:project_module_id]
     if @testcase.save
-      redirect_to project_project_module_path(params[:project_id],params[:project_module_id])
+      redirect_to project_project_module_path(params[:project_id],params[:project_module_id]),notice:"TestCase is created"
     end
   end
 
   def destroy
     @test_case = TestCase.find(params[:id])
     @test_case.destroy
-    redirect_to request.referrer
+    redirect_to project_project_module_path(params[:project_id],params[:project_module_id],[:id]),notice:"TestCase is Deleted."
   end
 
   def show
@@ -33,7 +33,7 @@ class TestCasesController < ApplicationController
   def update
     @testcase = TestCase.find(params[:id])
     if @testcase.update(test_case_params)
-      redirect_to request.referrer
+      redirect_to project_project_module_path(params[:project_id],params[:project_module_id],[:id]),notice:"TestCase is updated."
     end
   end
 

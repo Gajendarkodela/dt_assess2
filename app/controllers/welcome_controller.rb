@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @projects = Project.all.order(:ranking)
+    @projects = Project.search(params[:page])
   end
 end
