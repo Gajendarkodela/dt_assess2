@@ -1,6 +1,5 @@
 class ProjectModulesController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :assign_model, only: [:show, :edit]
+  before_action :assign_model, only: [:show, :edit, :update, :destroy]
 
   def new
     @project = Project.find(params[:project_id])
@@ -25,21 +24,17 @@ class ProjectModulesController < ApplicationController
     @test_case = TestCase.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    @project_module = ProjectModule.find(params[:id])
-
     if @project_module.update(module_params)
-      redirect_to project_path(params[:project_id]),notice: "Module updated successfully"
+      redirect_to project_path(@project_module.project),notice: "Module updated successfully"
     end
   end
   
   def destroy
-    @module = ProjectModule.find(params[:id])
-    @module.destroy
-    redirect_to project_path(params[:project_id]),notice: "Module Deleted successfully"
+    @project_module.destroy
+    redirect_to project_path(@project_module.project),notice: "Module Deleted successfully"
   end
   
   
@@ -51,10 +46,9 @@ class ProjectModulesController < ApplicationController
 
   def assign_model
     begin
-      @project = Project.find(params[:project_id])
       @project_module = ProjectModule.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      flash[:error] = "Record Not Gound"
+      flash[:error] = "Record Not Found"
       redirect_to project_project_modules_path
     end
   end

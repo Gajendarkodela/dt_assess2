@@ -1,38 +1,39 @@
 class ProjectsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  before_action :find_project, only: [:show,:edit,:update, :destroy]
+
+  def index
+    @projects = Project.all
+  end
+
   def create
-    @project = Project.new(project_params)
-    
+    @project = Project.new(project_params) 
     if @project.save
       @projects = Project.all.order(:ranking)
       redirect_to root_path,notice: "Project created"
     end
   end
 
-  def edit
-    
-  end
+  def edit; end
 
   def new
     @project = Project.new
   end
    
   def show
-    @project = Project.find(params[:id])
+    
     @modules = @project.project_modules
     @project_module = ProjectModule.new
   end
 
   def update
-    @project = Project.find(params[:id])
     if (@project.update(project_params))
       redirect_to @project ,notice:"Project updated successfully"
     end
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
+    
     redirect_to root_path,notice: "Project is deleted"
   end
 
@@ -41,4 +42,15 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name,:ranking,:details)
   end
+
+  def find_project
+    begin
+    @project = Project.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:error] = "Record Not Found"
+      @projects = Project.all
+      redirect_to projects_path
+    end  
+  end
+
 end

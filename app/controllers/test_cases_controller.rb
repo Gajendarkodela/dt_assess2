@@ -1,7 +1,6 @@
 class TestCasesController < ApplicationController
   def new
     @test_case = TestCase.new
-    @project = Project.find(params[:project_id])
     @module = ProjectModule.find(params[:project_module_id])
   end
 
@@ -9,19 +8,18 @@ class TestCasesController < ApplicationController
     @testcase =TestCase.new(test_case_params)
     @testcase.project_module_id = params[:project_module_id]
     if @testcase.save
-      redirect_to project_project_module_path(params[:project_id],params[:project_module_id]),notice:"TestCase is created"
+      redirect_to project_module_path(params[:project_module_id]),notice:"TestCase is created"
     end
   end
 
   def destroy
     @test_case = TestCase.find(params[:id])
     @test_case.destroy
-    redirect_to project_project_module_path(params[:project_id],params[:project_module_id],[:id]),notice:"TestCase is Deleted."
+    redirect_to project_module_path(@test_case.project_module),notice:"TestCase is Deleted."
   end
 
   def show
     @test_case = TestCase.find(params[:id])
-
   end
 
   def edit

@@ -39,11 +39,11 @@
           <tbody>
           <%@modules.each do |mod|%>
             <tr>
-              <td><%= link_to (mod.module_name), project_project_module_path(@project,mod) %></td>
-              <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_project_module_path(@project,mod)),remote:true%>
+              <td><%= link_to (mod.module_name), project_module_path(mod) %></td>
+              <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_module_path(mod)),remote:true%>
                   </td>  
               <td>
-                 <a><i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>','<%=@project.id%>');"></i></a>
+                 <a><i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>');"></i></a>
               </td>
             </tr>
           <%end%>
@@ -62,7 +62,7 @@
 </div>
 
 <!-- Modal HTML -->
-<div id="myModal" class="modal fade" style="color:#000;">
+<div id="myModal" class="modal fade">
   <div class="modal-dialog modal-confirm">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,7 +84,7 @@
 
 
 <!-- Delete Modules -->
-<div id="myModal2" class="modal fade" style="color:#000;">
+<div id="myModal2" class="modal fade">
   <div class="modal-dialog modal-confirm">
     <div class="modal-content">
       <div class="modal-header">
@@ -95,8 +95,8 @@
         <p>Do you really want to delete this Module? This process cannot be undone.</p>
       </div>
       <div class="modal-footer">
-        <a id="module_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+        <a id="module_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
       </div>
     </div>
   </div>
@@ -107,8 +107,8 @@
 
 <script type="text/javascript">
 
-  function openEditPopupModal(id,pid){
-    $('#module_delete').attr("href","/projects/"+pid+"/project_modules/"+id);
+  function openEditPopupModal(id){
+    $('#module_delete').attr("href","/project_modules/"+id);
     $('#myModal2').modal('show');
     }
     
