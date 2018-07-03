@@ -1,6 +1,20 @@
 <% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "alert alert-danger m-3" %>
-  
+  <div class="alert alert-danger m-3">
+    <%=value%>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+  </div>
 <% end %>
 
-<%= @projects.map(&:name) %>
+<h3> Available Projects Are</h3>
+<table class="container">
+  <th> Project ID </th>
+  <th> Project Name </th>
+<% @projects.each do |project|%>
+ <tr><td> <%= project.id %>  </td>
+     <td><%= project.name %><br></td>
+ </tr>
+<%end%>
+</table>
+
+  

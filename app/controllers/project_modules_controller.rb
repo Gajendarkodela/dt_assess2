@@ -1,13 +1,12 @@
 class ProjectModulesController < ApplicationController
   before_action :assign_model, only: [:show, :edit, :update, :destroy]
-
-  def new
-    @project = Project.find(params[:project_id])
+  before_action :find_project, only: [:new, :index]
+  
+  def new   
     @project_module = ProjectModule.new
   end
 
   def index 
-    @project = Project.find(params[:project_id])
     @project_modules = @project.project_modules
   end
 
@@ -35,22 +34,24 @@ class ProjectModulesController < ApplicationController
   def destroy
     @project_module.destroy
     redirect_to project_path(@project_module.project),notice: "Module Deleted successfully"
-  end
-  
-  
+  end 
+
   private
 
   def module_params
     params.require(:project_module).permit(:module_name,:id)
   end
+    
+  def find_project
+    @project = Project.find(params[:project_id])
+  end
 
   def assign_model
     begin
       @project_module = ProjectModule.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound => s
       flash[:error] = "Record Not Found"
-      redirect_to project_project_modules_path
+      redirect_to project_project_modules_path(@project)
     end
   end
-
 end

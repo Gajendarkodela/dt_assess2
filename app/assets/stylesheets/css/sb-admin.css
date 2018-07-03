@@ -481,6 +481,7 @@ footer.sticky-footer {
  {
   width:76px;
  }
+ 
  .infield{
     padding-top: 1px;
     padding-left: 13px;
@@ -492,6 +493,8 @@ footer.sticky-footer {
 .modal{z-index: 1060 !important;}
 
 td {padding:5px;}
+
+
 .booki{padding-bottom: 14px;}
 
 
@@ -580,7 +583,6 @@ td {padding:5px;}
     margin-left: 17rem!important;
 }
 .ddd
-
 {
   width:343px;
   height:147px;

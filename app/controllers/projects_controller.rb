@@ -5,6 +5,15 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def show 
+    @modules = @project.project_modules
+    @project_module = ProjectModule.new
+  end
+
+  def new
+    @project = Project.new
+  end
+
   def create
     @project = Project.new(project_params) 
     if @project.save
@@ -15,42 +24,30 @@ class ProjectsController < ApplicationController
 
   def edit; end
 
-  def new
-    @project = Project.new
-  end
-   
-  def show
-    
-    @modules = @project.project_modules
-    @project_module = ProjectModule.new
-  end
-
   def update
-    if (@project.update(project_params))
+    if @project.update(project_params)
       redirect_to @project ,notice:"Project updated successfully"
     end
   end
 
   def destroy
     @project.destroy
-    
     redirect_to root_path,notice: "Project is deleted"
   end
 
   private
-  
+
   def project_params
     params.require(:project).permit(:name,:ranking,:details)
   end
 
   def find_project
     begin
-    @project = Project.find(params[:id])
+      @project = Project.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
       flash[:error] = "Record Not Found"
       @projects = Project.all
       redirect_to projects_path
     end  
   end
-
 end

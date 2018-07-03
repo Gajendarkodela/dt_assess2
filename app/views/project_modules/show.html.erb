@@ -7,7 +7,7 @@
 <% end %>
 
 <button onclick="goBack()" class="btn btn-primary">Back</button>
-<div style="margin-left: 287px;margin-top: 36px;">
+<div class="modulealign">
   <h4>Module Name:&nbsp<%=@project_module.module_name%></h4>
 </div>
 
@@ -47,7 +47,7 @@
 </div>
 
 
-<div id="myModal3" class="modal fade" style="color:#000;">
+<div id="myModal3" class="modal fade">
   <div class="modal-dialog modal-confirm">
     <div class="modal-content">
       <div class="modal-header">  
@@ -58,8 +58,8 @@
         <p>Do you really want to delete this TestCase? This process cannot be undone.</p>
       </div>
       <div class="modal-footer">
-        <a id="test_case_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+        <a id="test_case_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
         
       </div>
     </div>
@@ -69,7 +69,6 @@
 <script type="text/javascript">
 
   function openDeletePopupModal(id){
-    debugger
     $('#test_case_delete').attr("href","/test_cases/"+id); 
     $('#myModal3').modal('show');
   }
