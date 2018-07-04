@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @projects = Project.search(params[:page],params[:no_page])
+    @project = Project.new
+    @projects = Project.search(params[:no_page],params[:page])
   end
 end

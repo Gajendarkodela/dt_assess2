@@ -3,18 +3,24 @@ class ProjectModulesController < ApplicationController
   before_action :find_project, only: [:new, :index]
   
   def new   
-    @project_module = ProjectModule.new
+    @project_module = @project.project_modules.new
   end
 
   def index 
     @project_modules = @project.project_modules
+    respond_to do |format|
+      format.xml { render(xml: @project_modules ) }
+      format.json{ render(json: @project_modules )}
+      format.html
+    end
   end
 
   def create
     @project_module = ProjectModule.new(module_params)
     @project_module.project_id = params[:project_id]
     if @project_module.save
-      redirect_to project_path(params[:project_id]),notice: "Module created successfully"
+      redirect_to project_path(params[:project_id]),
+          notice: "Module created successfully"
     end
   end
    
@@ -27,13 +33,19 @@ class ProjectModulesController < ApplicationController
 
   def update
     if @project_module.update(module_params)
-      redirect_to project_path(@project_module.project),notice: "Module updated successfully"
+      redirect_to (
+        project_path(@project_module.project)
+        ),
+        notice: "Module updated successfully"
     end
   end
   
   def destroy
     @project_module.destroy
-    redirect_to project_path(@project_module.project),notice: "Module Deleted successfully"
+    redirect_to (
+      project_path(@project_module.project)
+      ),
+      notice: "Module Deleted successfully"
   end 
 
   private
@@ -48,10 +60,11 @@ class ProjectModulesController < ApplicationController
 
   def assign_model
     begin
+
       @project_module = ProjectModule.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => s
+    rescue ActiveRecord::RecordNotFound => e
       flash[:error] = "Record Not Found"
-      redirect_to project_project_modules_path(@project)
+      redirect_to (project_project_modules_path(119))
     end
   end
 end

@@ -15,31 +15,31 @@
             <span aria-hidden="true">&times;</span>
           </button>
       </div>
-      <% @project = Project.new %>
       <%= render "projects/form_project"%>
     </div>
   </div>
 </div>
 
 <div class="text-right">
-    <a href="/projects/new" id='newproject' class="btn btn-primary mt-3" data-toggle="modal" data-target=
+    <a href="#" id='newproject' class="btn btn-primary mt-3" data-toggle="modal" data-target=
     "#newProjectForm">+ New Project</a>
 </div>
 
   <%= render 'projects' %>
- <footer class="footer well mb-3 b-radius-0 fixed-bottom">
-    <div class="text-left p-3 text-danger">
+ <div class="footer well b-radius-0 fixed-bottom">
+  <div class="row">
+    <div class="text-left p-3 text-dark container">
         Per page
         <a href="/welcome/index?no_page=3"> 3</a>
         <a href="/welcome/index?no_page=6"> 6</a>
         <a href="/welcome/index?no_page=9"> 9</a>
-        <a href="/welcome/index?no_page=12"> 12</a>
-  </div>
-      <div class="container">
-        <%= will_paginate @projects, renderer:WillPaginate::ActionView::Bootstrap4LinkRenderer%>
+      <div class="float-right">
+      <%= params[:no_page]%>out of:<%= @projects.count%>  <%= will_paginate @projects, renderer:WillPaginate::ActionView::Bootstrap4LinkRenderer%>
+
       </div>
-    
-  </footer>
+    </div>
+  </div>
+  </div>
 <script>
 $(document).ready(function(){
     $("#newproject").click(function(){

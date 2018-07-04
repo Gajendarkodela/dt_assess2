@@ -3,6 +3,11 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    respond_to do |format|
+      format.xml { render(xml: @projects ) }
+      format.json{ render(json: @projects )}
+      format.html
+    end
   end
 
   def show 
@@ -37,10 +42,6 @@ class ProjectsController < ApplicationController
 
   private
 
-  def project_params
-    params.require(:project).permit(:name,:ranking,:details)
-  end
-
   def find_project
     begin
       @project = Project.find(params[:id])
@@ -50,4 +51,9 @@ class ProjectsController < ApplicationController
       redirect_to projects_path
     end  
   end
+
+  def project_params
+    params.require(:project).permit(:name,:ranking,:details)
+  end
+
 end
