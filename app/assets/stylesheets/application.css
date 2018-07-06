@@ -10,6 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+<<<<<<< 5a6446cd5e2fbc5e626f8caf113d98726bbf5d22
+=======
+ *= require font-awesome
+>>>>>>> User Login
  *= require_tree .
  *= require_self
  */
