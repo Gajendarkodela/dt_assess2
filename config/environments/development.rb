@@ -12,8 +12,6 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-<<<<<<< 5a6446cd5e2fbc5e626f8caf113d98726bbf5d22
-=======
   config.action_mailer.perform_deliveries = true
     config.action_mailer.default :charset => "utf-8"
 
@@ -36,7 +34,7 @@ password: ENV["GMAIL_PASSWORD"]
 }
 
 
->>>>>>> User Login
+
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true

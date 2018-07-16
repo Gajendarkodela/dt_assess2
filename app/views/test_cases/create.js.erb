@@ -1,6 +1,12 @@
-<%if @testcase.errors.any?%>
+
+<%if @test_case.errors.any?%>
   $('#error-test').html('name <%= @testcase.errors["title"][0]%>');
 <%else%>
   $('#error-test').html('');
+  //$('#new_test').html('');
+  
+  $('.close').click();
+  //$('#main_body').html("<%=j render 'test_cases/list_test_cases' %>")
+
 <%end%>
 

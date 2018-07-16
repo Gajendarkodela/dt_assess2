@@ -1,109 +1,12 @@
-<% if flash[:notice].present? %>
-    <div class="alert alert-success" role="alert">
-      <%= flash[:notice] %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </div>
-<% end %>
-
-<button onclick="goBack()" class="btn btn-primary">Back</button>
-<div class="modulealign">
-  <h4>Module Name:&nbsp<%=@project_module.module_name%></h4>
-</div>
-
-<div class="table-wrapper">
-  <div class="table-title">
-    <div class="row">
-      <div class="col-sm-8"><h3>TestCase List</h3></div>
-      <div class="col-sm-4 pl-5">
-        <%= link_to 'New TestCase',new_project_module_test_case_path(@project_module), class:"btn btn-primary" %>
-      </div>
-    </div>
-  </div>
-  <%if @test_cases.present?%>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th colspan=2>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@test_cases.each do |tcase|%>
+<%@test_cases.each do |tcase|%>
           <tr>
             <td><%= link_to (tcase.title), test_case_path(tcase) %></td>
-            <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_test_case_path(tcase))%>
-            </td>  
-            <td>
-              <i class="fa fa-trash text-danger" onclick="openDeletePopupModal('<%=tcase.id%>');"></i>
-            </td>
+            <div class="ml-3">
+                <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_test_case_path(tcase))%>
+                </td>  
+                <td>
+                   <i class="fa fa-trash text-danger" onclick="openDeletePopupModal('<%=tcase.id%>');"></i>
+                </td>
+            </div>
           </tr>
         <%end%>
-      </tbody>
-    </table> 
-  <% else %>
-    <h3> No Testcases for this Module!</h3>
-  <%end%>
-</div>
-
-
-<div id="myModal3" class="modal fade">
-  <div class="modal-dialog modal-confirm">
-    <div class="modal-content">
-      <div class="modal-header">  
-        <h4 class="modal-title">Are you sure?</h4>  
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Do you really want to delete this TestCase? This process cannot be undone.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-        <a id="test_case_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
-        
-      </div>
-    </div>
-  </div>
-</div>   
-
-<script type="text/javascript">
-
-  function openDeletePopupModal(id){
-    $('#test_case_delete').attr("href","/test_cases/"+id); 
-    $('#myModal3').modal('show');
-  }
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

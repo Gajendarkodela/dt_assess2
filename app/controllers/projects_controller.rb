@@ -12,7 +12,11 @@ class ProjectsController < ApplicationController
 
   def show 
     @modules = @project.project_modules
-    @project_module = ProjectModule.new
+    @project_module = @project.project_modules.first || ProjectModule.new
+    if @modules.count>0
+      @test_cases = @modules.first.test_cases 
+    end
+    @test_case = TestCase.new
   end
 
   def new
@@ -27,7 +31,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @modules = @project.project_modules
+   end
 
   def update
     if @project.update(project_params)

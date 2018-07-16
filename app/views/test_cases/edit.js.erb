@@ -1,0 +1,10 @@
+
+// 
+$('#new_test').html("<%=j render partial: 'projects/models', 
+	locals: {
+	partial_name: 'test_cases/form_test_case', partial_id: 'modalLoginForm6',
+    title:'Edit Module'} 
+  %>")
+  $('.edit-module').html('Edit TestCase')
+
+$('#modalLoginForm6').modal('show');

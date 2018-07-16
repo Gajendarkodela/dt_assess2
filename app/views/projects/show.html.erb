@@ -1,135 +1,14 @@
-<button onclick="goBack()" class="btn btn-primary">Back</button>
-<div class= "container"> 
-  <% if flash[:notice].present? %>
-    <div class="alert alert-success" role="alert">
-      <%= flash[:notice] %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </div>
-  <% end %>
-
-  <%= render partial: 'models', locals: { partial_name: "form_project", partial_id: 'modalLoginForm4',
+<%= render partial: 'projects/models', locals: { partial_name: "projects/form_project", partial_id: 'modalLoginForm4',
        title: "Edit Project"}%>
-  <%= render partial: 'models', locals: { partial_name: "form_module", partial_id: 'modalLoginForm5',
+  <%= render partial: 'projects/models', locals: { partial_name: "projects/form_module", partial_id: 'modalLoginForm5',
        title:"New Module"}%>
-  <%= render partial: 'models', locals: { partial_name: "form_module", partial_id: 'modalLoginForm2',
+  <%= render partial: 'projects/models', locals: { partial_name: "projects/form_module", partial_id: 'modalLoginForm2',
        title:"Edit Module"}%>
-  
-
-<div class="projectname">
-  <h4>Project Name:<a href="<%=edit_project_path(@project)%>" data-remote="true" class="reset-form">&nbsp<%=@project.name%> </a></h4></div></h4></div>
-  <div class="table-wrapper">
-    <div class="table-title">
-      <div class="row">
-        <div class="col-sm-8"><h3>Modules List</h3></div>
-        <div class="col-sm-4">
-            <a href="<%=new_project_project_module_path(@project.id)%>" class="btn btn-primary pull-right text-white"  id="newmodule" data-remote="true"><i class="fa fa-plus" data-remote="true"></i>&nbsp;Module
-            </a>
-        </div>
-      </div>
-    </div>
-    <%if @modules.present?%>
-      <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th colspan=2>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-          <%@modules.each do |mod|%>
-            <tr>
-              <td><%= link_to (mod.module_name), project_module_path(mod) %></td>
-              <td><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_project_module_path(mod)),remote:true%>
-                  </td>  
-              <td>
-                 <a><i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>');"></i></a>
-              </td>
-            </tr>
-          <%end%>
-          </tbody>
-      </table> 
-    <% else %>
-       <h3> No Modules for this project!</h3>
-    <%end%>
-  </div>
-</div>
-
-
-<!-- Delete Project Bootstrap Model -->
-<div class="container ml-5">
-  <a href="#myModal" class="btn btn-light text-danger" data-toggle="modal">Delete Project</a>
-</div>
-
-<!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-  <div class="modal-dialog modal-confirm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="icon-box">
-        </div>        
-        <h4 class="modal-title">Are you sure?</h4>  
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Do you really want to delete this Project? This process cannot be undone.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-        <%= link_to("Ok", [@project], method: :delete, class:'btn btn-info ok',) %>
-      </div>
-    </div>
-  </div>
-</div>     
-
-
-<!-- Delete Modules -->
-<div id="myModal2" class="modal fade">
-  <div class="modal-dialog modal-confirm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Are you sure?</h4>  
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Do you really want to delete this Module? This process cannot be undone.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-        <a id="module_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
-      </div>
-    </div>
-  </div>
-</div>  
-
-
-
-
-<script type="text/javascript">
-
-  function openEditPopupModal(id){
-    $('#module_delete').attr("href","/project_modules/"+id);
-    $('#myModal2').modal('show');
-    }
+ 
+  <%unless @project_module.new_record?%>
+  	<script>
+  	  	 $('#main_body').html('<%=j render "test_cases/list_test_cases" %>')
+    </script>
+  <%else%>
     
-    $(document).ready(function(){
-      $("#newmodule").click(function(){
-        document.getElementById("module_form").reset();
-        $('#error-module').html('');
-        $('#edit-module').html('<h4>Create Module<h4>')
-
-       });
-      $(".reset-form").click(function(){
-        document.getElementById("my-form").reset();
-        $('#error-name').html('');
-        $('#edit-module').html('<h4>Create Module<h4>')
-
-       });
-});
-
-</script>
-
-
-
-
-
+  <%end%>

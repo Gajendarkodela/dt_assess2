@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
-<<<<<<< 5a6446cd5e2fbc5e626f8caf113d98726bbf5d22
-=======
-	before_action :authenticate_model!
+	before_action :authenticate_user!
 	protect_from_forgery prepend: true
->>>>>>> User Login
+
+	layout 'welcome'
+
   def index
     @project = Project.new
     @projects = Project.search(params[:no_page],params[:page])

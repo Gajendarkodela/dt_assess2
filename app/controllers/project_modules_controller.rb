@@ -1,9 +1,10 @@
 class ProjectModulesController < ApplicationController
   before_action :assign_model, only: [:show, :edit, :update, :destroy]
-  before_action :find_project, only: [:new, :index]
+  before_action :find_project, only: [:new, :index,:create]
   
   def new   
     @project_module = @project.project_modules.new
+    @modules = @project.project_modules
   end
 
   def index 
@@ -16,8 +17,7 @@ class ProjectModulesController < ApplicationController
   end
 
   def create
-    @project_module = ProjectModule.new(module_params)
-    @project_module.project_id = params[:project_id]
+    @project_module = @project.project_modules.new(module_params)
     if @project_module.save
       redirect_to project_path(params[:project_id]),
           notice: "Module created successfully"
@@ -25,11 +25,17 @@ class ProjectModulesController < ApplicationController
   end
    
   def show
+    @project = @project_module.project
     @test_cases = @project_module.test_cases
     @test_case = TestCase.new
+    @modules = @project.project_modules
+
   end
 
-  def edit; end
+  def edit
+    @project = @project_module.project
+    @modules =  @project.project_modules
+   end
 
   def update
     if @project_module.update(module_params)
@@ -41,9 +47,10 @@ class ProjectModulesController < ApplicationController
   end
   
   def destroy
+    @project = @project_module.project
     @project_module.destroy
     redirect_to (
-      project_path(@project_module.project)
+      project_path(@project)
       ),
       notice: "Module Deleted successfully"
   end 
@@ -55,7 +62,7 @@ class ProjectModulesController < ApplicationController
   end
     
   def find_project
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id]) || @project_module.project
   end
 
   def assign_model

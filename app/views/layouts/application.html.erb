@@ -1,3 +1,4 @@
+<!-- <button onclick="goBack()" class="btn btn-primary">Back</button> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +17,7 @@
     <%= stylesheet_link_tag 'css/sb-admin' %>
     <%= javascript_include_tag "application" %>   
     <%= javascript_include_tag 'vendor/jquery.min.js' %>
+    <%= javascript_include_tag 'vendor/jquery-ui.js'%>
     <%= javascript_include_tag 'vendor/bootstrap.bundle.min.js' %>
     <%= javascript_include_tag 'vendor/jquery.easing.min.js' %>
     <%= javascript_include_tag 'vendor/Chart.min.js'%>   
@@ -27,16 +29,27 @@
   </head>
 
   <body class="fixed-nav sticky-footer bg-light" id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <a class="navbar-brand" href="/"> Test Case Application</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-
+    <% if current_user %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="mainNav">
+        <a class="navbar-brand" href="/">  <%= image_tag image_path('logo.png'), width:112 %></a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <%=render 'layouts/left_nav'%>
+        </div>
+      </nav>
+      <div class="content-wrapper" id="main_body">
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success" role="alert">
+            <%= flash[:notice] %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </div>
+        <% end %>
+        <%= yield%>
+      </div>
+    <% else %>
       <%= yield %>
-
-    <footer class="footer well ml-0-mb-0-imp b-radius-0 fixed-bottom">
+    <% end %>   
+    <footer class="footer ml-0-mb-0-imp b-radius-0 fixed-bottom">
       <div style="background-color:#f5f5f5;">
         <div class="copyright-info text-center">
           <span class="text-muted">
@@ -48,15 +61,93 @@
         <div class="clearfix"></div>
       </div>
     </footer>
-  </body>
+<!-- Modal HTML -->
+<% if current_user %>
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="icon-box">
+          </div>        
+          <h4 class="modal-title">Are you sure?</h4>  
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to delete this Project? This process cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <%= link_to("Ok", [@project], method: :delete, class:'btn btn-info ok',) %>
+        </div>
+      </div>
+    </div>
+  </div>     
+    
+
+  <!-- Delete Modules -->
+  <div id="myModal2" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>  
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to  this Module? This process cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <a id="module_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div id="myModal3" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header">  
+          <h4 class="modal-title">Are you sure?</h4>  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"  id="delete_case">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to delete this TestCase? This process cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <a id="test_case_delete" class="btn btn-info ok" data-method="delete" data-remote="true">Ok</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>   
+<% end %>
+<script type="text/javascript">
+
+  function openEditPopupModal(id){
+    $('#module_delete').attr("href","/project_modules/"+id);
+    $('#myModal2').modal('show');
+    }
+    
+    $(document).ready(function(){
+      $("#newmodule").click(function(){
+        document.getElementById("module_form").reset();
+        $('#error-module').html('');
+        $('#edit-module').html('<h4>Create Module<h4>')
+
+       });
+      $(".reset-form").click(function(){
+        document.getElementById("my-form").reset();
+        $('#error-name').html('');
+        $('#edit-module').html('<h4>Create Module<h4>')
+
+       });
+});
+function openDeletePopupModal(id){
+    $('#test_case_delete').attr("href","/test_cases/"+id); 
+    $('#myModal3').modal('show');
+  }
+</script>
 
 
-  <script>
-    function goBack() {
-        window.history.back();
-     }
-  </script>
-
+</body>
 </html>
-
-

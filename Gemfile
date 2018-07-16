@@ -52,11 +52,9 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-<<<<<<< 5a6446cd5e2fbc5e626f8caf113d98726bbf5d22
-=======
+
 gem "therubyracer"
 gem "less-rails"
->>>>>>> User Login
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "twitter-bootstrap-rails"
 gem 'nested_form_fields'
@@ -66,8 +64,8 @@ gem 'json'
 gem 'will_paginate-bootstrap'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
-<<<<<<< 5a6446cd5e2fbc5e626f8caf113d98726bbf5d22
-=======
+
 gem 'font-awesome-rails', '~> 4.5'
 gem 'devise'
->>>>>>> User Login
+gem "material_icons"
+

@@ -1,0 +1,67 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+input, textarea
+{
+    font-size: 14px!important;
+}
+
+.login-content {
+    padding: 20px;
+    position: relative;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 592px;
+    height: 452px;
+    width: 578px;
+    margin: 30px auto;
+    margin-top:50px;
+        background: #2b3e51;
+        padding: 20px;  
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+   background-color: #2b3e51;
+}
+.login-bg {
+    background-color: #2b3e51!important;
+}
+.ml-80 {
+    margin-left: 80px;
+}
+.pt-45
+{
+    padding:45px;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 44px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.login-button {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #2b3e51;
+    width: 320px;
+    height: 42px;
+    padding-top: 11px;
+    background-color: #65e6ff;
+    border-radius: 3px;
+    margin-left: 8px;
+    margin-right: -15px;
+  }

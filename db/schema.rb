@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< 5a6446cd5e2fbc5e626f8caf113d98726bbf5d22
-ActiveRecord::Schema.define(version: 20180620071040) do
-=======
-ActiveRecord::Schema.define(version: 20180705080544) do
+ActiveRecord::Schema.define(version: 20180712111011) do
+
+  create_table "criminals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.text "name"
+    t.bigint "prison_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prison_id"], name: "index_criminals_on_prison_id"
+  end
 
   create_table "models", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
@@ -28,10 +33,21 @@ ActiveRecord::Schema.define(version: 20180705080544) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_name"
     t.index ["email"], name: "index_models_on_email", unique: true
     t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
   end
->>>>>>> User Login
+
+  create_table "models_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "model_id", null: false
+    t.bigint "project_id", null: false
+  end
+
+  create_table "prisons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "prison_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "project_modules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "module_name"
@@ -49,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180705080544) do
     t.datetime "updated_at", null: false
     t.integer "ranking"
     t.text "details"
+    t.string "key"
   end
 
   create_table "test_cases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -58,7 +75,26 @@ ActiveRecord::Schema.define(version: 20180705080544) do
     t.bigint "project_module_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "priority", limit: 6, default: "Medium"
     t.index ["project_module_id"], name: "index_test_cases_on_project_module_id"
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "project_modules", "projects"

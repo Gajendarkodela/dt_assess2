@@ -1,18 +1,32 @@
-<div class="table-wrapper">
-  <div class="table-title">
-    <div class="row">
-      
-      <div class="col-sm-4">
-        <h3> New TestCase</h3>
-        <div class="mt-5">
-          <%= form_with model:[@project,@module,@test_case]  do |form|%>
-            <div id="error-test" class="text-danger"></div>
-            <p> <%=form.text_field :title,placeholder:"TestCase name"%></p>
-            <p> <%=form.text_area :description,placeholder:"TestCase description"%></p>
-            <p><%=form.submit class:"btn btn-primary"%></p>
-          <%end%>
+<%= form_with model:@test_case.new_record? ? [ @project_module,@test_case] : @test_case   do |form|%>
+  <div class="modal-body mx-3">
+    <div class="md-form mb-4" >
+      <div class="input-group">
+        <div class="input-group-addon bg-secondary infield">
+          <i class="fa fa-book prefix text-white mt-3 booki"></i>  
         </div>
+         <%=form.text_field :title,placeholder:"TestCase name",class:"form-control"%>
+       </p>
       </div>
+      <div id="error-name" class="text-danger"></div>
     </div>
+    <div class="md-form mb-4">
+      <div class="input-group">
+        <div class="input-group-addon bg-secondary infield">
+          <i class="fa fa-hand-o-right prefix text-white mt-3 booki"></i>
+        </div>
+        <%=form.text_area :description,placeholder:"TestCase description", 
+        class:"form-control"%>
+        </div>
+      <div id="error-ranking" class="text-danger"></div>
+    </div>
+    <p><%= form.label :Priority%>
+    <%=form.select:priority,:select=> ['High', 'Medium', 'Low']%></p>
+    <div id="error-details" class="text-danger"></div>
+  </div>     
+  <div class="modal-footer d-flex justify-content-center">  
+    <p><%=form.submit class:"btn btn-primary"%></p>
   </div>
-</div>
+
+  <%end%>
+        

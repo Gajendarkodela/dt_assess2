@@ -1,34 +1,45 @@
-<div class="table-wrapper">
-    <div class="table-title">
+<div class="well login-content login-bg pt-60-imp">
+  <%= devise_error_messages! %>
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %> bg-light text-danger ml-80 mr-5 error-login"><%= value %>!!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span></button>
+    </div>
+  <% end %>
+  <div class="login-container-header">
+    <div class="container">
       <div class="row">
-        <div class="col-sm-8"><h3>Login</h3>
-       
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </div>
-
-            <div class="field">
-              <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "off" %>
-            </div>
-
-            <% if devise_mapping.rememberable? -%>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-            <% end %>
-
-            <div class="actions">
-              <%= f.submit "Log in" ,class:"btn btn-primary"%>
-            </div>
-          <% end %>
-          <%= render "devise/shared/links" %>
+        <div class="col-sm-12">
+          <div class="text-center">
+            <img height="70" alt="logo" src="/assets/logo-f97c05d94d2727fde9bc2923c1983f0f783186124713467a1ab7aeb1d0212cac.png" >
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do 
+    |f| %>
+    <fieldset>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-80 pt-45">
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class:"form-control"%>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off",placeholder:"Password",class:"form-control"%>
+            </div>
+            <% if devise_mapping.rememberable? -%>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me ,style:"color:white"%>
+            <% end %>
+            <div class="actions form-group">
+              <%= f.submit "Log in" ,class:"form-control btn btn-info login-button"%>
+            </div>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
