@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712111011) do
+ActiveRecord::Schema.define(version: 20180719060358) do
 
   create_table "criminals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.text "name"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 20180712111011) do
     t.string "key"
   end
 
+  create_table "projects_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.string "project_ids"
+    t.string "user_ids"
+    t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id"
+    t.index ["user_id", "project_id"], name: "index_projects_users_on_user_id_and_project_id"
+  end
+
   create_table "test_cases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
@@ -93,6 +102,7 @@ ActiveRecord::Schema.define(version: 20180712111011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

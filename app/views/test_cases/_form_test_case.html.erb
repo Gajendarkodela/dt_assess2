@@ -1,28 +1,20 @@
 <%= form_with model:@test_case.new_record? ? [ @project_module,@test_case] : @test_case   do |form|%>
   <div class="modal-body mx-3">
     <div class="md-form mb-4" >
-      <div class="input-group">
-        <div class="input-group-addon bg-secondary infield">
-          <i class="fa fa-book prefix text-white mt-3 booki"></i>  
-        </div>
-         <%=form.text_field :title,placeholder:"TestCase name",class:"form-control"%>
-       </p>
-      </div>
-      <div id="error-name" class="text-danger"></div>
+      <p>
+        <%=form.text_field :title,placeholder:"TestCase name",class:"form-control test-title"%>
+      </p>
     </div>
     <div class="md-form mb-4">
-      <div class="input-group">
-        <div class="input-group-addon bg-secondary infield">
-          <i class="fa fa-hand-o-right prefix text-white mt-3 booki"></i>
-        </div>
-        <%=form.text_area :description,placeholder:"TestCase description", 
+      <%=form.text_area :description,placeholder:"TestCase description", 
         class:"form-control"%>
-        </div>
-      <div id="error-ranking" class="text-danger"></div>
     </div>
-    <p><%= form.label :Priority%>
-    <%=form.select:priority,:select=> ['High', 'Medium', 'Low']%></p>
-    <div id="error-details" class="text-danger"></div>
+    <div id="error-ranking" class="text-danger"></div>
+      <div class="md-form mb-4">
+       <p>
+       <%=form.select:priority, ['High', 'Medium', 'Low'],{},{class:'form-control'}%></p>
+      <div id="error-details" class="text-danger"></div>
+    </div>
   </div>     
   <div class="modal-footer d-flex justify-content-center">  
     <p><%=form.submit class:"btn btn-primary"%></p>

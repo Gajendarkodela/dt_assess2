@@ -1,31 +1,28 @@
-<!-- <div class="table-wrapper">
-  <div class="table-title"><%=@test_case.title%></div>      
-      <div class="col-sm-4 xs-4">
-        <div class="mt-2">
-            <div class="col-xs-8 col-md-9">
-                <%= @test_case.description%></div>
-            </div>
-            <div class="col-xs-4 col-md-3">
-            	ddee
-            </div>
-        </div>
-  </div>
- -->
-<div class="table-wrapper"  tabindex='2' id="show-test">
-	<div class="row col-xs-12 details-section">
-		<div class="col-xs-12 col-md-12 ml-80"> <%=@test_case.title%> </div>
-	    <div class="col-xs-3 col-md-3">TestCase Title:</div>
-	    <div class="col-xs-8 col-md-9">
-	    <%=@test_case.title%>
-	    </div>
-	    <div class="col-xs-3 col-md-3">Description:</div>
-	    <div class="col-xs-8 col-md-9">
-	    	<%= @test_case.description%>
-	    </div>
-	    <div class="col-xs-3 col-md-3">Priority:</div>
-	    <div class="col-xs-8 col-md-9">
-	    	<%= @test_case.priority%>
-	    </div>
-	 </div>
-	</div>
+<div class="card m-b-20 table-wrapper">
+  <div class="card-body">
+    <h6 class="card-title">TestCase Details</h6>
+    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+    TestCase Title:		        	
+			<%=@test_case.title%><br>       
+		    Description:
+		  <%= @test_case.description%><br>
+		    			
+		    	Priority:
+		    			<%= @test_case.priority%><br>
+		    	Created By:
+		    			
+		    			<%= current_user.user_name%><br>
+		    			
 
+        </div> 
+        <div class="row col-xs-12">
+	        <div class="card-body"> 		    			
+		    			<div class="float-right">
+	            <%=link_to 'Edit', (edit_test_case_path(@test_case)),remote:true,class:"btn btn-primary"%>
+
+						  <a class="btn btn-light text-danger" onclick="openDeletePopupModal('<%=@test_case.id%>');">
+						  	Delete
+						  </a>
+	          </div>
+	        </div>
+	      </div>

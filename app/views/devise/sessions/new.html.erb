@@ -1,11 +1,4 @@
-<div class="well login-content login-bg pt-60-imp">
-  <%= devise_error_messages! %>
-  <% flash.each do |key, value| %>
-    <div class="flash <%= key %> bg-light text-danger ml-80 mr-5 error-login"><%= value %>!!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span></button>
-    </div>
-  <% end %>
+<div class="well login-content login-bg pt-60-imp">  
   <div class="login-container-header">
     <div class="container">
       <div class="row">
@@ -17,12 +10,21 @@
       </div>
     </div>
   </div>
+  <%= devise_error_messages! %>
+  <% flash.each do |key, value| %>
+   <script>
+            $.notify(
+              "<%= value%>",
+              {position:"right middle"},"success"
+            );
+          </script>
+  <% end %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do 
     |f| %>
     <fieldset>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ml-80 pt-45">
+          <div class="col-md-8 ml-80 pt-45 mt-3">
             <div class="form-group">
               <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class:"form-control"%>
             </div>
@@ -43,3 +45,5 @@
     </fieldset>
   <% end %>
 </div>
+
+

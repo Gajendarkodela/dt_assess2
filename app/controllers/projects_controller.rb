@@ -15,8 +15,8 @@ class ProjectsController < ApplicationController
     @project_module = @project.project_modules.first || ProjectModule.new
     if @modules.count>0
       @test_cases = @modules.first.test_cases 
+      @test_case = @test_cases.first
     end
-    @test_case = TestCase.new
   end
 
   def new
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params) 
     if @project.save
       @projects = Project.all.order(:ranking)
-      redirect_to root_path,notice: "Project created"
+      redirect_to root_path,notice: "Project created",type:"success"
     end
   end
 
@@ -37,13 +37,13 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project ,notice:"Project updated successfully"
+      redirect_to @project ,notice:"Project updated successfully",type:"success"
     end
   end
 
   def destroy
     @project.destroy
-    redirect_to root_path,notice: "Project is deleted"
+    redirect_to root_path,notice: "Project is deleted",type:"success"
   end
 
   private
@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
       redirect_to projects_path
     end  
   end
-
+  
   def project_params
     params.require(:project).permit(:name,:ranking,:details)
   end

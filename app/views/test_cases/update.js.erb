@@ -1,7 +1,9 @@
 
 <%if @test_case.errors.any?%>
-  $('#error-test').html('name <%= @testcase.errors["title"][0]%>');
-<%else%>
+   $(".test-title").notify(
+   "<%= @test_case.errors["title"][0]%>",
+  { position:"right" }
+);<%else%>
   $('#error-test').html('');
   $('#main_body').html("<%=j render 'test_cases/list_test_cases' %>")
   $('.fade').remove();

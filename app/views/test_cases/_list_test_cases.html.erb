@@ -1,23 +1,29 @@
 <div class="panel panel-default">
 	<div class="row"> 
-		<div class="col col-sm-8 border-right ">
+		<div class="col col-sm-6 col-lg-6 pr-2 col-xs-12 attach-right">
 			<div class="col-sm-12 pb-3">
-				<h6>TestCases
-	    		<%= link_to '+TestCase', new_project_module_test_case_path(@project_module), class:"btn btn-primary create-case-button", remote: true%>
+				<p></p>
+				<h6><%=@project.name%>/ <%=@project_module.module_name%>
+	    		<%= link_to '+TestCase', new_project_module_test_case_path(@project_module), class:"btn btn-primary float-right", remote: true%>
 	      </h6>
 	   	</div>
 	   	<%if @test_cases.present?%>
         <%@test_cases.each do |tcase|%>
-			    <div class="col-sm-12 pb-3">
-            <div class="card m-b-20 card-body border-<%=tcase.priority%>">
-              <h4 class="card-title"><%=tcase.title%> 
-              	<div class="float-right"><%=link_to '<i class="fa fa-pencil"></i>'.html_safe, (edit_test_case_path(tcase)),remote:true%>
-			    				<i class="fa fa-trash text-danger" onclick="openDeletePopupModal('<%=tcase.id%>');"></i>
-			    			</div>
-			    		</h4>
-              <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-              <a href="<%=test_case_path(tcase)%>" data-remote=true  class="btn btn-primary"> Full Description></a>
-            </div>
+			    <div class="col-sm-12 pb-1 attach-right">
+		        <div class="card m-b-20 card-body border-<%=tcase.priority%> 
+		        	<%= @test_case == tcase ? 't-active': 't-inactive'%>" id="test-hover">
+		        	<a href="<%=test_case_path(tcase)%>" data-remote=true 
+		        		class="module_list">
+		            <h6 class="card-title"><%=tcase.title%> 
+		            	<%if @test_case == tcase%>
+		              <span class="arrow-alt"></span>
+		              <%end%>
+					    	</h6> 
+		            <p class="card-text s-text"><%=tcase.description%></p>		         
+		          <div class="row">
+		          </a>	
+			        </div>
+		        </div>
           </div>
 			  <%end%>
 			<%else%>
@@ -30,7 +36,10 @@
 				</div>
 			<%end%>
     </div>
-    <div class="col col-sm-4 pr-2 col-xs-12" id="test-form">
+    <div class="col col-sm-6 col-lg-6 pr-2 col-xs-12 attach-left" id="test-form">
+    	<%if @test_cases.present?%>
+    		<%= render 'test_cases/show_test_case'%>
+    	<%end%>
 	  </div>
   </div>
  
@@ -44,3 +53,4 @@
        title:"Edit Module"}%>
   
   <div id="new_test"></div>
+

@@ -5,6 +5,7 @@ html {
 
 body {
   overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
 }
 
 body.sticky-footer {
@@ -12,7 +13,7 @@ body.sticky-footer {
 }
 
 body.sticky-footer .content-wrapper {
-  min-height: calc(100vh - 56px - 56px);
+  min-height: calc(120vh - 56px - 56px);
 }
 
 body.fixed-nav {
@@ -20,7 +21,7 @@ body.fixed-nav {
 }
 
 .content-wrapper {
-  min-height: calc(100vh - 56px);
+  min-height: calc(120vh - 56px);
   padding-top: 1rem;
 }
 
@@ -162,6 +163,8 @@ body.fixed-nav {
   }
   #mainNav .navbar-collapse .navbar-sidenav > .nav-item {
     width: 250px;
+    margin-top:4px;
+    background-color:#ffff;
     padding: 0;
   }
   #mainNav .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
@@ -281,7 +284,7 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 
 .content-wrapper {
   overflow-x: hidden;
-  background: white;
+  background: #ebebeb;
 }
 
 @media (min-width: 992px) {
@@ -370,8 +373,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level,
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
-    padding:12px;
-    background: #ddd;
     height:480px;
     border-radius:2px;
   }
@@ -489,6 +490,7 @@ footer.sticky-footer {
     padding-top: 1px;
     padding-left: 13px;
     width: 40px;
+    height:44px;
  }
 
 
@@ -501,21 +503,20 @@ td {padding:5px;}
 .booki{padding-bottom: 14px;}
 
 
-
-
 .table-wrapper {
     position:fixed;
-    width: 500px;
-    height:500px;
+    padding-top:0px!important;
+     width: 500px;
+    height:554px;
     margin: 30px auto;
     margin-top:0px;
-        background: #ffc;
+        background: #f6f7fb;
         padding: 20px;  
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     font-family: Lato, sans-serif;
     
     font-size: 13px;
-    color: rgb(103, 106, 108);
+    color: #000;
     }
     .test-wrapper {
     width: 578px;
@@ -624,16 +625,18 @@ td {padding:5px;}
   text-decoration: none;
       font-family: "Roboto", sans-serif;
     font-size: 0.95rem;
+    padding:8px;
  }
 .module_list:hover
  {
-   text-decoration: none;
+   text-decoration: none!important;
+   color:#000;
  }
 
  .btn-primary
 {
-  background-color:#01aec3!important;
-  border-color:#01aec3;
+  background-color:#003693!important;
+  border-color:##003693;
 }
 .reset-form
 { margin-left:2px;
@@ -697,3 +700,12 @@ td {padding:5px;}
 {
   color:#fff;
 }
+
+
+.bg-dtd
+{
+  background-color:#003693;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+}
+
+

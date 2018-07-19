@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  devise_for :users
-  devise_for :models, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :welcome do
     get 'index', on: :collection
   end
@@ -11,5 +9,8 @@ Rails.application.routes.draw do
       resources :test_cases
     end
   end
+
+ # match '/users',   to: 'users#index',   via: 'get'
+ resources :users_admin, :controller => 'users'
 end
   

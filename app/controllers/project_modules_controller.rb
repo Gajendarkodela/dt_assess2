@@ -29,13 +29,12 @@ class ProjectModulesController < ApplicationController
     @test_cases = @project_module.test_cases
     @test_case = TestCase.new
     @modules = @project.project_modules
-
   end
 
   def edit
     @project = @project_module.project
     @modules =  @project.project_modules
-   end
+  end
 
   def update
     if @project_module.update(module_params)
@@ -51,8 +50,7 @@ class ProjectModulesController < ApplicationController
     @project_module.destroy
     redirect_to (
       project_path(@project)
-      ),
-      notice: "Module Deleted successfully"
+      ),notice: "Module Deleted successfully"
   end 
 
   private

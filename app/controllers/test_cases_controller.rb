@@ -10,13 +10,14 @@ class TestCasesController < ApplicationController
   def index
     @project = @project_module.project
     @modules =  @project.project_modules
+    @test_case = @test_cases.first 
   end
 
   def create
     @test_case =@project_module.test_cases.new(test_case_params)
     if @test_case.save
       redirect_to project_module_test_cases_path(@project_module),
-      notice: "Successfully created"
+      notice: "Successfully created",type: "success"
     end
   end
 
@@ -35,7 +36,9 @@ class TestCasesController < ApplicationController
     @project_module = @test_case.project_module
     @test_cases = @project_module.test_cases
     if @test_case.destroy
-      redirect_to project_module_test_cases_path(@project_module)
+      redirect_to project_module_test_cases_path(@project_module),
+      notice:"Deleted Successfully",
+      type:"error"
     end
   end 
  
@@ -46,11 +49,14 @@ class TestCasesController < ApplicationController
 
   def find_test_case
     @test_case = params[:id] ? TestCase.find(params[:id]) : TestCase.new
+    @project_module = @test_case.project_module
+    @project = @project_module ? @project_module.project : ''
+    @test_cases =  @project_module ? @project_module.test_cases: ''
   end
 
   def find_project_module
     @project_module = ProjectModule.find(params[:project_module_id])
     @test_cases = @project_module.test_cases
-
+     
   end
 end

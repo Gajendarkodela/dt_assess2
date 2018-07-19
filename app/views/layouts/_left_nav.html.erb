@@ -1,38 +1,41 @@
+
+<a href="<%=edit_project_path(@project)%>" data-remote="true" 
+        class="reset-form text-white"> <%=truncate @project.name,length:20%> 
+      </a>
 <ul class="navbar-nav navbar-sidenav bg-light m-width" id="exampleAccordion">
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="      Project Name">
+
   </li>
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Project">
     <p></p>
-    <p class="project-heading">
-      Project ->
-      <a href="<%=edit_project_path(@project)%>" data-remote="true" 
-        class="reset-form"> <%=truncate @project.name,length:20%> 
-      </a>
+    <p class="project-heading ml-4">
+      Modules
       <a href="<%=new_project_project_module_path(@project.id)%>" class="text-dark text-right mr-3"  id="newmodule" data-remote="true" title="Add module">
         <i class="fa fa-plus" data-remote="true"></i>
       </a>
     </p>
     <div class="sidenav-second-level" id="collapseComponents">
-      Modules
-      <table class="row ml-3 text-muted">
+     
         <%if @modules.present?%>
           <%@modules.each do |mod|%>          
-            <tr class="<%= @project_module == mod ? 'bg-nice': 'bg-inactive' %>">
-              <td ><%= link_to (truncate mod.module_name,length:20),project_module_test_cases_path(mod),class:"module_list", remote:true %> </td>
-              <td>   <%= link_to '<i class = "fa fa-pencil"></i>'.html_safe, (edit_project_module_path(mod)),remote:true%>
-              </td>
-              <td>
-                <a>
-                  <i class="fa fa-trash text-danger" onclick="openEditPopupModal('<%= mod.id%>');">
+            <div class="<%= @project_module == mod ? 'bg-nice': 'bg-inactive' %>">
+              <div class="ml-1">
+                  <%= link_to (truncate mod.module_name,length:20),project_module_test_cases_path(mod),class:"module_list", remote:true %> 
+                <div class="float-right mr-2">   
+                  <%= link_to '<i class = "fa fa-pencil"></i>'.html_safe, (edit_project_module_path(mod)),remote:true%>
+                  <a>
+                  <i class="fa fa-trash text-danger ml-2" onclick="openEditPopupModal('<%= mod.id%>');">
                   </i>
-                </a> 
-              </td>
-            </tr>
+                  </a> 
+                </div>
+              </div>
+              
+            </div>
           <%end%>
         <%else%>
           <tr><td>No Modules Found!</td></tr>
         <%end%>
-      </table>
+     
     </div>
   </li>  
   <a href="#myModal" class="btn btn-light text-danger ml-3" data-toggle="modal">Delete Project</a>     
@@ -40,7 +43,7 @@
         
 <ul class="navbar-nav ml-auto">
   <li class="nav-item">
-    <a class="nav-link text-white" rel="nofollow" data-method="delete" href="/models/sign_out">
+    <a class="nav-link text-white" rel="nofollow" data-method="delete" href="/users/sign_out">
       <i class="fa fa-fw fa-sign-out"></i>
       Logout
     </a>

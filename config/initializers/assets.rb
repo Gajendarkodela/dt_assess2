@@ -20,6 +20,7 @@ Rails.application.config.assets.precompile += %w(  vendor/dataTables.bootstrap4.
 Rails.application.config.assets.precompile += %w( vendor/sb-admin.min.js)
 Rails.application.config.assets.precompile += %w( vendor/sb-admin-datatables.min.js)
 Rails.application.config.assets.precompile += %w( vendor/sb-admin-charts.min.js)
+Rails.application.config.assets.precompile += %w( notify.min.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

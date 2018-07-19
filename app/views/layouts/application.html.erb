@@ -25,12 +25,13 @@
     <%= javascript_include_tag 'vendor/dataTables.bootstrap4.js'%>  
     <%= javascript_include_tag 'vendor/sb-admin.min.js'%>
     <%= javascript_include_tag 'vendor/sb-admin-datatables.min.js'%>
-    <%= javascript_include_tag 'vendor/sb-admin-charts.min.js'%>  
+    <%= javascript_include_tag 'vendor/sb-admin-charts.min.js'%>
+    <%= javascript_include_tag 'notify.min.js'%>   
   </head>
 
   <body class="fixed-nav sticky-footer bg-light" id="page-top">
     <% if current_user %>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="mainNav">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dtd fixed-top" id="mainNav">
         <a class="navbar-brand" href="/">  <%= image_tag image_path('logo.png'), width:112 %></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <%=render 'layouts/left_nav'%>
@@ -38,11 +39,11 @@
       </nav>
       <div class="content-wrapper" id="main_body">
         <% if flash[:notice].present? %>
-          <div class="alert alert-success" role="alert">
-            <%= flash[:notice] %>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </div>
+          <script>
+            $.notify(
+              "<%= flash[:notice] %>","<%= flash[:type]%>"
+            );
+          </script>
         <% end %>
         <%= yield%>
       </div>
@@ -141,7 +142,7 @@
         $('#edit-module').html('<h4>Create Module<h4>')
 
        });
-});
+    });
 function openDeletePopupModal(id){
     $('#test_case_delete').attr("href","/test_cases/"+id); 
     $('#myModal3').modal('show');

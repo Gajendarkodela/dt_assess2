@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //=require vendor/bootstrap.bundle
+//=require notify.min
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs

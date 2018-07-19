@@ -2,18 +2,69 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+body
+{
+    font-size: 0.95rem;
+}
 .border-Medium
 {
 	 border-left: 4px solid blue!important;
+	 padding-bottom:0px!important;
 }
 .border-High
 {
 	 border-left: 4px solid orange!important;
+	 padding-bottom:0px!important;
 }
 .border-Low
 {
 	 border-left: 4px solid green!important;
+	 padding-bottom:0px!important;
 }
 .create-case-button {
-    margin-left: 467px;
+    margin-left: 388px;
+}
+
+.attach-left{
+	padding-left:0px!important;
+	}
+
+.attach-right
+{
+	padding-right:0px!important;
+}
+
+
+.arrow-alt
+{
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #bbc6de !important;
+    border-top: 8px solid transparent;
+      display: block; 
+            height: 0; 
+     left: auto;
+    margin-top: -10px; 
+    position: absolute;
+    right: -7px;
+    color: #888;
+    top: 50%;
+    width: 0;
+}
+.t-active
+{
+  background-color:#f6f7fb!important;	
+}
+.active a {
+
+  background-color: #094493;
+
+}
+h6
+{
+  font-family: "Roboto", sans-serif!important;
+}
+s.text
+{
+  font-size:0.95rem;
 }
