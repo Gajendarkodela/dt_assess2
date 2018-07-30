@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719060358) do
+ActiveRecord::Schema.define(version: 20180727100612) do
+
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "test_case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_case_id"], name: "index_attachments_on_test_case_id"
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
 
   create_table "criminals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.text "name"
@@ -18,6 +38,14 @@ ActiveRecord::Schema.define(version: 20180719060358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prison_id"], name: "index_criminals_on_prison_id"
+  end
+
+  create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "file"
+    t.bigint "test_case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_case_id"], name: "index_links_on_test_case_id"
   end
 
   create_table "models", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -69,12 +97,20 @@ ActiveRecord::Schema.define(version: 20180719060358) do
   end
 
   create_table "projects_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.bigint "project_id", null: false
-    t.bigint "user_id", null: false
-    t.string "project_ids"
-    t.string "user_ids"
+    t.string "project_id"
+    t.string "user_id"
     t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id"
     t.index ["user_id", "project_id"], name: "index_projects_users_on_user_id_and_project_id"
+  end
+
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.string "role", limit: 14
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_roles_on_project_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "test_cases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -85,6 +121,10 @@ ActiveRecord::Schema.define(version: 20180719060358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "priority", limit: 6, default: "Medium"
+    t.string "created_by"
+    t.text "steps"
+    t.text "results"
+    t.json "files"
     t.index ["project_module_id"], name: "index_test_cases_on_project_module_id"
   end
 
@@ -102,7 +142,6 @@ ActiveRecord::Schema.define(version: 20180719060358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
-    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

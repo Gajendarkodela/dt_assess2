@@ -3,7 +3,7 @@ class TestCasesController < ApplicationController
   before_action :find_test_case, except:[:create]
   before_action :find_project_module, only:[:new, :index, :create]
 
-  def show ; end
+  def show ;end
 
   def new;end
 
@@ -15,6 +15,7 @@ class TestCasesController < ApplicationController
 
   def create
     @test_case =@project_module.test_cases.new(test_case_params)
+    @test_case.created_by = current_user.user_name
     if @test_case.save
       redirect_to project_module_test_cases_path(@project_module),
       notice: "Successfully created",type: "success"
@@ -26,9 +27,10 @@ class TestCasesController < ApplicationController
   def update
     @project_module = @test_case.project_module
     if @test_case.update(test_case_params)
+      @test_case.links.create!(file:params[:test_case][:links]) if params[:test_case][:links]
       @test_cases = @project_module.test_cases
       redirect_to project_module_test_cases_path(@project_module),
-      notice:"Successfully Updated"
+      notice:"Successfully Updated",type:"success"
     end
   end
 
@@ -41,10 +43,17 @@ class TestCasesController < ApplicationController
       type:"error"
     end
   end 
+
+  def remove_attachment 
+    @link = Link.find(params[:index])
+    @link.remove_file!
+    @link.delete
+    redirect_to project_module_test_cases_path(@test_case.project_module)
+  end
  
   private 
   def test_case_params
-    params.require(:test_case).permit(:title,:description,:id,:priority)
+    params.require(:test_case).permit(:title,:description,:id,:priority,:steps,:results,links_attributes: [:id,:test_case_id,:file]).to_h  #,{files: []}
   end
 
   def find_test_case

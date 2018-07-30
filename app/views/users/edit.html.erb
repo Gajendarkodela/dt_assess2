@@ -1,0 +1,36 @@
+<%#if current_user.admin?%> 
+<div class="row mt-3">
+  <div class="col-lg-4"> </div>
+  <div class="col-lg-4">
+    <%= form_for(@user,url:users_admin_path(@user)) do |f| %>
+       <%if @user.errors.present?%>
+        <%= @user.errors[:password]%>
+      <%end%>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :UserName %><br />
+        <%= f.text_field :user_name, autofocus: true,class:"form-control"%>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+          <%= f.password_field :password, autocomplete: "off",class:"form-control" %>
+      </div>
+     <div class="field"
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off",class:"form-control" %>
+      </div>
+      <div class="actions">
+       <%= f.submit "Update User",class:"btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+ <div class="col-lg-4">
+ </div>
+ </div>
+ <%#end%>

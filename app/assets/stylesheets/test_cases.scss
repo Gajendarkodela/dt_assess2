@@ -55,11 +55,7 @@ body
 {
   background-color:#f6f7fb!important;	
 }
-.active a {
 
-  background-color: #094493;
-
-}
 h6
 {
   font-family: "Roboto", sans-serif!important;
@@ -68,3 +64,36 @@ s.text
 {
   font-size:0.95rem;
 }
+
+fixed-edit
+{
+  position:fixed;
+  z-index:1030;
+}
+
+
+div.show-image {
+    position: relative;
+    float:left;
+    margin:5px;
+}
+div.show-image:hover img{
+    opacity:0.5;
+}
+div.show-image:hover i ,div.show-image:hover sa{
+    display: block;
+}
+div.show-image i,div.show-image a {
+    position:absolute;
+    display:none;
+}
+div.show-image i.update,div.show-image a.update {
+    top:50%;
+    left:10%;
+}
+div.show-image i.delete,div.show-image a.delete{
+    top:50%;
+    left:90%;
+}
+
+

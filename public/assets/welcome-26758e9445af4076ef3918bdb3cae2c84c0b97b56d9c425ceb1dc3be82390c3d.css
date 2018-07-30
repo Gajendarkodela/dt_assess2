@@ -1,0 +1,107 @@
+/* line 4, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.paginate_margin {
+  margin-left: 51rem;
+}
+
+/* line 8, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.main-box {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  border-radius: 3px;
+  height: 107px;
+}
+
+/* line 15, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.infographic-box.colored {
+  color: #fff;
+  border: 0 !important;
+}
+
+/* line 19, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.infographic-box {
+  padding: 19px;
+}
+
+/* line 22, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.emerald-bg {
+  background-color: #9c27b0 !important;
+}
+
+/* line 25, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.infographic-box i {
+  font-size: 2.4em;
+  display: block;
+  float: left;
+  margin-right: 15px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+}
+
+/* line 37, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 45, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.infographic-box.colored .headline {
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* line 50, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.infographic-box .headline {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 300;
+  text-align: right;
+}
+
+/* line 56, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.infographic-box .value {
+  font-size: 2.1em;
+  font-weight: 600;
+  margin-top: -5px;
+  display: block;
+  text-align: right;
+}
+
+/* line 67, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.card-box {
+  padding: 20px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  background-clip: padding-box;
+  background-color: #ffffff;
+}
+
+/* line 77, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.widget-bg-color-icon .bg-icon-success {
+  background-color: rgba(102, 187, 106, 0.75);
+  border: 6px solid rgba(102, 187, 106, 0.3);
+}
+
+/* line 81, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.widget-bg-color-icon .bg-icon {
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+/* line 87, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/welcome.scss */
+.pull-left {
+  float: left;
+}

@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//=require vendor/bootstrap.bundle
-//=require notify.min
+
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
+//=require vendor/bootstrap.bundle
 //= require turbolinks
+//= require ckeditor/init
+//=require notify.min
+//= require dropzone
 //= require_tree .

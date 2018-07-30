@@ -14,6 +14,7 @@ gem 'sqlite3'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
+gem 'bootstrap-sass', '~> 3.3.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'pry'
@@ -68,4 +69,8 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'font-awesome-rails', '~> 4.5'
 gem 'devise'
 gem "material_icons"
-
+gem 'ckeditor'
+gem 'paperclip'
+gem 'carrierwave', '~> 1.0'
+gem 'dropzonejs-rails'
+gem "mini_magick"

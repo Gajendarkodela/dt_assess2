@@ -1,0 +1,10 @@
+/* line 4, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/users.scss */
+.active a, .h-5:hover {
+  background-color: #374352;
+  border-radius: 2px;
+}
+
+/* line 12, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/users.scss */
+.ml-700 {
+  margin-left: 730px;
+}

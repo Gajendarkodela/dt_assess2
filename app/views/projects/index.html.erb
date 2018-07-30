@@ -1,20 +1,40 @@
-<% flash.each do |key, value| %>
-  <div class="alert alert-danger m-3">
-    <%=value%>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span></button>
-  </div>
+<% if flash[:notice].present? %>
+    <script>
+            $.notify(
+              "<%= flash[:notice] %>","<%= flash[:type]%>",
+              {position:'top center'}
+            );
+          </script>
 <% end %>
+<div class="modal fade" id="newProjectForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="  true">
+  <div class="modal-dialog" role="document" id="mainform">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create Project</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="project_close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <%= render "projects/form_project"%>
+    </div>
+  </div>
+</div>
 
-<h3> Available Projects Are</h3>
-<table class="container">
-  <th> Project ID </th>
-  <th> Project Name </th>
-<% @projects.each do |project|%>
- <tr><td> <%= project.id %>  </td>
-     <td><%= project.name %><br></td>
- </tr>
-<%end%>
-</table>
 
-  
+  <%= render 'welcome/projects' %>
+
+<script>
+$(document).ready(function(){
+    $("#newproject").click(function(){
+        document.getElementById("my-form").reset();
+        $('#error-name').html('');
+        $('#error-ranking').html('');
+        $('#error-details').html('');
+    });
+});
+</script>
+
+
+
+    
+

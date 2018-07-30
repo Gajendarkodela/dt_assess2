@@ -1,7 +1,8 @@
 <%if @project.errors.any? %>
-  $('#error-name').html('name <%= @project.errors["name"][0]%>!!');
-  $('#error-ranking').html('ranking <%= @project.errors["ranking"][0]%>!!');
-  $('#error-details').html('details <%= @project.errors["details"][0]%>!!');
+  $('#error-name').html('<%= @project.errors["name"][0]%>');
+  $('.field-name').css('border','1px solid red');
+  $('#error-ranking').html('<%= @project.errors["ranking"][0]%>');
+  $('#error-details').html('<%= @project.errors["details"][0]%>');
 <%else%>
   $('.parent').html('<%=j render "welcome/projects"%>');
   $('#modalLoginForm').modal('hide');
@@ -9,6 +10,5 @@
   $('#error-name').html('');
   $('#error-ranking').html('');
   $('#error-details').html('');
-  
   document.getElementById("my-form").reset();
 <%end%>

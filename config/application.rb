@@ -1,5 +1,4 @@
 require_relative 'boot'
-
 require 'rails/all'
 require "will_paginate-bootstrap"
 require "will_paginate/collection"
@@ -22,7 +21,7 @@ module DtAssess
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
     config.assets.precompile << %w( *.scss *.js )
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

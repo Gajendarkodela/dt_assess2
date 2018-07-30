@@ -12,6 +12,6 @@ admin = User.create(
     :email => "Gajendar@dispatchtrack.com",
     :password => "dispatchtrack",
     :password_confirmation => "dispatchtrack",
-    :admin => "true"
+    :role=> "Project Admin"
     } 
 )

@@ -1,9 +1,6 @@
 (function($) {
   "use strict"; // Start of use strict
-  // Configure tooltips for collapsed side navigation
-  jQuery('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
-    template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
-  })
+ 
   // Toggle the side navigation
   $("#sidenavToggler").click(function(e) {
     e.preventDefault();
@@ -23,17 +20,7 @@
     this.scrollTop += (delta < 0 ? 1 : -1) * 30;
     e.preventDefault();
   });
-  // Scroll to top button appear
-  $(document).scroll(function() {
-    var scrollDistance = $(this).scrollTop();
-    if (scrollDistance > 100) {
-      $('.scroll-to-top').fadeIn();
-    } else {
-      $('.scroll-to-top').fadeOut();
-    }
-  });
-  // Configure tooltips globally
-  $('[data-toggle="tooltip"]').tooltip()
+
   // Smooth scrolling using jQuery easing
   $(document).on('click', 'a.scroll-to-top', function(event) {
     var $anchor = $(this);

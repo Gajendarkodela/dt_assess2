@@ -1,0 +1,109 @@
+/* line 6, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+body {
+  font-size: 0.95rem;
+}
+
+/* line 10, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.border-Medium {
+  border-left: 4px solid blue !important;
+  padding-bottom: 0px !important;
+}
+
+/* line 15, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.border-High {
+  border-left: 4px solid orange !important;
+  padding-bottom: 0px !important;
+}
+
+/* line 20, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.border-Low {
+  border-left: 4px solid green !important;
+  padding-bottom: 0px !important;
+}
+
+/* line 25, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.create-case-button {
+  margin-left: 388px;
+}
+
+/* line 29, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.attach-left {
+  padding-left: 0px !important;
+}
+
+/* line 33, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.attach-right {
+  padding-right: 0px !important;
+}
+
+/* line 39, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.arrow-alt {
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #bbc6de !important;
+  border-top: 8px solid transparent;
+  display: block;
+  height: 0;
+  left: auto;
+  margin-top: -10px;
+  position: absolute;
+  right: -7px;
+  color: #888;
+  top: 50%;
+  width: 0;
+}
+
+/* line 54, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+.t-active {
+  background-color: #f6f7fb !important;
+}
+
+/* line 59, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+h6 {
+  font-family: "Roboto", sans-serif !important;
+}
+
+/* line 63, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+s.text {
+  font-size: 0.95rem;
+}
+
+/* line 68, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+fixed-edit {
+  position: fixed;
+  z-index: 1030;
+}
+
+/* line 75, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+div.show-image {
+  position: relative;
+  float: left;
+  margin: 5px;
+}
+
+/* line 80, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+div.show-image:hover img {
+  opacity: 0.5;
+}
+
+/* line 83, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+div.show-image:hover i, div.show-image:hover sa {
+  display: block;
+}
+
+/* line 86, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+div.show-image i, div.show-image a {
+  position: absolute;
+  display: none;
+}
+
+/* line 90, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+div.show-image i.update, div.show-image a.update {
+  top: 50%;
+  left: 10%;
+}
+
+/* line 94, /home/dthyd-3/Desktop/dt_assess/app/assets/stylesheets/test_cases.scss */
+div.show-image i.delete, div.show-image a.delete {
+  top: 50%;
+  left: 90%;
+}

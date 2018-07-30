@@ -1,0 +1,57 @@
+	<%= render partial: 'projects/models', locals: { partial_name: "projects/form_project", partial_id: 'modalLoginForm4',
+       title: "Edit Project"}%>
+  <div class="row"> 
+		<div class="col col-sm-6 col-lg-6 pr-2 col-xs-12 attach-right">
+	    <div class="card-box">
+        <h6 class="m-t-0 card-title">Members</h6>
+        <%admin =current_user.assigned_role(@project.id) == 'Project Admin'%>
+        <table class="table table-bordered " >
+          <thead class="thead-light">
+            <th>User Name</th>
+            <th>Role</th>
+            <%if admin%>
+             <th>Action</th>
+            <%end%>
+          </thead> 
+          <%@project.users.each do |user|%>
+            <tbody>
+              <tr>
+                <td><%=user.user_name%></td>
+                <td><%=user.assigned_role(@project.id)%></td>
+                <%if admin%>
+                  <td><%=link_to '<i class = "fa fa-trash text-danger"></i>'.html_safe,remove_user_project_path({user_id:user.id})%>
+                  </td>
+
+                <%end%>
+              </tr>
+            </tbody>
+          <%end%>
+        </table>
+			</div>
+		</div>
+    <%if admin%>
+  		<div class="col col-sm-6 col-lg-6 pr-2 col-xs-12">
+  			<div class="card m-b-20 table-wrapper">
+   			 	<div class="card-body">
+      		  <h6 class="card-title">Add Member to project</h6>
+      		  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+      		  <form action="<%=assign_users_project_path%>">
+      			  <div class="form-group">
+            	  <%=select_tag "user", options_for_select(@project.un_assigned_users(current_user).collect{ |u| [u.user_name, u.id] }),class:"form-control"%>
+              </div>
+              <div class="form-group">
+            	  <%=select_tag "role", options_for_select(['Project Admin', 'Project Member']),class:"form-control"%>
+              </div>
+              
+              <input type="submit" value="Add Member", class="btn btn-primary">
+            </form>
+          </div>
+          <div class="row col-xs-12">
+	          <div class="card-body"> 
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

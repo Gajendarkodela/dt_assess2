@@ -1,16 +1,9 @@
 
 <%if @test_case.errors.any?%>
-  $('#error-test').html('name <%= @test_case.errors["title"][0]%>');
-  $(".test-title").notify(
-   "<%= @test_case.errors["title"][0]%>",
-  { position:"right" }
-);
+  $('#error-test').html('<%= @test_case.errors["title"][0]%>');
+  $(".test-title").css('border','1px solid red');  
 <%else%>
   $('#error-test').html('');
-  //$('#new_test').html('');
-  
   $('.close').click();
-  //$('#main_body').html("<%=j render 'test_cases/list_test_cases' %>")
-
 <%end%>
 

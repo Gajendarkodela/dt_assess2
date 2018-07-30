@@ -9,7 +9,7 @@
 	   	</div>
 	   	<%if @test_cases.present?%>
         <%@test_cases.each do |tcase|%>
-			    <div class="col-sm-12 pb-1 attach-right">
+			    <div class="col-sm-12 pb-1 attach-right attach-left">
 		        <div class="card m-b-20 card-body border-<%=tcase.priority%> 
 		        	<%= @test_case == tcase ? 't-active': 't-inactive'%>" id="test-hover">
 		        	<a href="<%=test_case_path(tcase)%>" data-remote=true 

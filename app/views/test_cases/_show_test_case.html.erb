@@ -1,28 +1,110 @@
-<div class="card m-b-20 table-wrapper">
+<div class="card m-b-20 table-wrapper" style="overflow-y: scroll; overflow-x:hidden;height: 100%;">
   <div class="card-body">
     <h6 class="card-title">TestCase Details</h6>
-    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-    TestCase Title:		        	
+    <h6 class="card-subtitle text-muted">TestCase Title:		        	
 			<%=@test_case.title%><br>       
-		    Description:
-		  <%= @test_case.description%><br>
-		    			
-		    	Priority:
-		    			<%= @test_case.priority%><br>
-		    	Created By:
-		    			
-		    			<%= current_user.user_name%><br>
-		    			
+		</h6>
+		
+    Description:
+		  <%= @test_case.description%><br>  			
+		Priority:
+			<%= @test_case.priority%><br>
+		Created By:  			
+		  <%= @test_case.created_by%><br>
+		Created at:		
+      <%= @test_case.created_at%><br>
+    Steps:<br>
 
-        </div> 
-        <div class="row col-xs-12">
-	        <div class="card-body"> 		    			
-		    			<div class="float-right">
-	            <%=link_to 'Edit', (edit_test_case_path(@test_case)),remote:true,class:"btn btn-primary"%>
+    <%= form_for @test_case,remote:true do |form|%>
+      
+         <%= form.text_area :steps,id:"editor1",contenteditable:true%>
+      Expected Result:
+        <%= form.text_area :results,id:"editor2",contenteditable:true%>
+        
+          <%if @test_case.links.count>0%>
+            <%@test_case.links.each do |link|%>
+              <div class="row p-2">
+                <div >
 
-						  <a class="btn btn-light text-danger" onclick="openDeletePopupModal('<%=@test_case.id%>');">
-						  	Delete
-						  </a>
-	          </div>
-	        </div>
-	      </div>
+                 <a href="<%=link.file_url(:original)%>" data-lightbox="image_1"
+                   data-title="My caption">
+                     <%=image_tag link.file_url(:thumb),class:"active"%>
+                 </a>
+        
+                </div>
+                <div class="col-md-6">
+                <%= File.basename(link.file_url)%><br>
+                Added&nbsp;<%=link.created_at.strftime("%d %B %Y at %H:%M") %>
+                <div class="bottom">
+                  <a class="update fa fa-external-link mr-3" href="<%=link.file_url(:original)%>" target="_blank">Open in new tab</a> 
+                  <a class="delete fa fa-close text-danger" onclick="opendelete('<%= link.id%>','<%=@test_case.id%>');" title="Delete file">
+                       Delete </a>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
+        <%=form.file_field :links,class:"fa fa-copy"%>
+        <%=form.submit 'save', class:"btn btn-primary"%>
+  <%end%>
+    <%if current_user.user_name == @test_case.created_by%>
+  	  <div class="card-body"> 		    			
+  			<div class="float-right fixed-edit">
+  	      <%=link_to 'Edit', (edit_test_case_path(@test_case)),remote:true,class:"btn btn-primary"%>
+  			  <a class="btn btn-light text-danger" 
+  			     onclick="openDeletePopupModal('<%=@test_case.id%>');">
+  			  	Delete
+  			  </a>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+<script>
+  function opendelete(index,tid){
+    $('#delete-file').attr("href","/test_cases/"+tid+"/remove_attachment?index="+index);
+    $('#delete-attachment').modal('show');
+
+    }
+
+  CKEDITOR.disableAutoInline = true;
+   CKEDITOR.inline( 'editor1' );
+   CKEDITOR.inline( 'editor2' );
+
+  $(document).ready(function(){
+    $('#uniq').click(function()
+    {
+      $('.cke_top').toggle();
+      $('#up-steps').toggle();
+    });
+  });
+
+  $('#uniq2').click(function()
+    {
+      $('#cke_2_top').toggle();
+      $('#results').toggle();
+    });
+  </script>
+
+<!-- delete attachment -->
+  <div id="delete-attachment" class="modal fade">
+    <div class="modal-dialog modal-confirm modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Are you sure?</h6>  
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body" style="font-family: Lato, sans-serif;">
+          <p>
+
+            Do you really want to delete this attachment
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <a id="delete-file" class="btn btn-info ok">Ok</a>
+        </div>
+      </div>
+    </div>
+  </div>  
+
